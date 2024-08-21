@@ -6,6 +6,7 @@ import Navbar from './components/Navbar/Navbar';
 import SignForm from './components/Signin/SignForm';
 import CollectibleList from './components/CollectibleList/CollectibleList';
 import CollectibleForm from './components/CollectibleForm/CollectibleForm';
+import CollectibleDetails from './components/CollectibleDetails/CollectibleDetails';
 
 //___Services___//
 import * as authService from '../src/services/authService';
@@ -47,12 +48,6 @@ const App = () => {
     navigate('/collectibles');
   };
 
-  const handleDeleteCollectible = async (collectibleId) => {
-    const deletedCollectible = await collectibleService.deleteCollectible(collectibleId);
-    setCollectibles(collectibles.filter((collectible) => collectible.id !== deletedCollectible.id));
-    navigate('/collectibles');
-  };
-
   const handleUpdateCollectible = async (collectibleId, collectibleFormData) => {
     const updatedCollectible = await collectibleService.update(collectibleId, collectibleFormData);
     console.log(updatedCollectible);
@@ -60,6 +55,12 @@ const App = () => {
     setCollectibles(collectibles.map((collectible) => (parseInt(collectibleId) === collectible.id ? updatedCollectible : collectible)));
 
     navigate(`/collectibles/${collectibleId}`);
+  };
+
+  const handleDeleteCollectible = async (collectibleId) => {
+    const deletedCollectible = await collectibleService.deleteCollectible(collectibleId);
+    setCollectibles(collectibles.filter((collectible) => collectible.id !== deletedCollectible.id));
+    navigate('/collectibles');
   };
 
     return (
@@ -72,7 +73,8 @@ const App = () => {
               <>
                 <Route path='/hello' element={<h1>World</h1>} />
                 <Route path='/collectibles' element={<CollectibleList collectibles={collectibles} />} />
-                <Route path='collectibles/create' element={<CollectibleForm handleCreateCollectible={handleCreateCollectible} />} />
+                <Route path='/collectibles/create' element={<CollectibleForm handleCreateCollectible={handleCreateCollectible} />} />
+                <Route path='/collectibles/:collectibleId' element={<CollectibleDetails handleDeleteCollectible={handleDeleteCollectible} />}/>
               </>
               :
               <>

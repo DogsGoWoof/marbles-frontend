@@ -76,8 +76,7 @@ const CollectibleList = ({ collectibles }) => {
                     <option value="desc">Descending</option>
                 </select>
                 {collectibles.map((collectible) => (
-                    // <Link key={collectible.id} to={`/collectibles/${collectible.id}`}>
-                    <Link key={collectible.id} to={`/collectibles`}>
+                    <Link key={collectible.id} to={`/collectibles/${collectible.id}`}>
                         <article>
                             <header>
                                 <div>
