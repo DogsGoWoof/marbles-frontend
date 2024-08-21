@@ -20,6 +20,9 @@ const Navbar = ({ handleSignout }) => {
                         <Link to='/collectibles'>Collection</Link>
                     </li>
                     <li>
+                        <Link to='/collectibles/create'>Add to Collection</Link>
+                    </li>
+                    <li>
                     <Link to='' onClick={handleSignout}>
                         Sign Out
                     </Link>
