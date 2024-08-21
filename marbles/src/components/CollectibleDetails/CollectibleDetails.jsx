@@ -15,6 +15,7 @@ const CollectibleDetails = (props) => {
     useEffect(() => {
         const fetchCollectible = async () => {
             const [collectibleData] = await collectibleService.show(collectibleId);
+                // needed to destructure returned list from Flask backend
             setCollectible(collectibleData);
         };
         fetchCollectible();
@@ -24,6 +25,7 @@ const CollectibleDetails = (props) => {
     return (
         <>
             {collectible ?
+            // Component error of null value on collectible, ternary used to prevent breaking
                 <main >
                     { collectible.image ?
                         <img className="detail-image" src={collectible.image} alt={`User provided image of ${collectible.name}.`} />

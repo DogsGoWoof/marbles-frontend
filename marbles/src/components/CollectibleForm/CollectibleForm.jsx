@@ -11,23 +11,25 @@ const CollectibleForm = (props) => {
         rating: 0,
         count: 0,
         condition: 'Mint',
-        date_obtained: new Date().toLocaleDateString(), // likely need to change formatting later
+        date_obtained: new Date().toISOString().slice(0, 10),
     });
 
     const { collectibleId } = useParams();
 
     useEffect(() => {
         const fetchCollectible = async () => {
-            const collectibleData = await collectibleService.show(collectibleId);
+            const [collectibleData] = await collectibleService.show(collectibleId);
             setFormData(collectibleData);
+            console.log(collectibleData);
         };
         if (collectibleId) fetchCollectible();
     }, [collectibleId]);
 
     const handleChange = (evt) => {
+        console.log('before set', formData);
         setFormData({ ...formData, [evt.target.name]: evt.target.value });
+        console.log(formData);
     };
-
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
@@ -38,6 +40,7 @@ const CollectibleForm = (props) => {
         }
     };
 
+    
     return (
         <main>
             <h1>{collectibleId ? 'Edit Collectible' : 'New Collectible'}</h1>
@@ -90,7 +93,7 @@ const CollectibleForm = (props) => {
                     type="date"
                     name="date_obtained"
                     id="date_obtained-input"
-                    value={formData.date_obtained}
+                    value={new Date(formData.date_obtained).toISOString().slice(0, 10)}
                     onChange={handleChange}
                 />
                 <button type="submit">SUBMIT</button>

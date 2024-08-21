@@ -5,7 +5,7 @@ import * as authService from '../../services/authService';
 
 const SignForm = ({ setUser, formType }) => {
 
-    console.log(formType);
+    // console.log(formType);
 
     //___States___//
     const [message, setMessage] = useState(['']);

@@ -75,6 +75,7 @@ const App = () => {
                 <Route path='/collectibles' element={<CollectibleList collectibles={collectibles} />} />
                 <Route path='/collectibles/create' element={<CollectibleForm handleCreateCollectible={handleCreateCollectible} />} />
                 <Route path='/collectibles/:collectibleId' element={<CollectibleDetails handleDeleteCollectible={handleDeleteCollectible} />}/>
+                <Route path='/collectibles/:collectibleId/edit' element={<CollectibleForm handleUpdateCollectible={handleUpdateCollectible} />}/>
               </>
               :
               <>
