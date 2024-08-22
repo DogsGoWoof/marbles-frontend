@@ -9,8 +9,12 @@ import CollectibleList from './components/CollectibleList/CollectibleList';
 import CollectibleForm from './components/CollectibleForm/CollectibleForm';
 import CollectibleDetails from './components/CollectibleDetails/CollectibleDetails';
 //___Profile Components___//
+import ProfileList from './components/ProfileList/ProfileList';
 import ProfileForm from './components/ProfileForm/ProfileForm';
 import ProfileDetails from './components/ProfileDetails/ProfileDetails';
+
+// import Workshop from '../../Workshop';
+
 
 //___Services___//
 import * as authService from '../src/services/authService';
@@ -19,6 +23,10 @@ import * as profileService from '../src/services/profileService';
 
 //___Context___//
 export const AuthedUserContext = createContext(null);
+
+//___Styles___//
+import '../src/assets/stylesheets/App.scss';
+
 
 const App = () => {
 
@@ -45,7 +53,8 @@ const App = () => {
       const profilesData = await profileService.index();
       setProfiles(profilesData);
     };
-    if (user) fetchAllProfiles();
+    // if (user) fetchAllProfiles();
+    fetchAllProfiles();
   }, [user]);
 
 
@@ -82,7 +91,6 @@ const App = () => {
   //___Profile Handlers___//
   const handleCreateProfile = async (profileFormData) => {
     const newProfile = await profileService.create(profileFormData);
-    console.log(newProfile);
     setProfiles([newProfile, ...profiles]);
     navigate('/profiles');
   };
@@ -106,10 +114,12 @@ const App = () => {
 
   return (
     <>
-      <h1>Hello, World!</h1>
       <AuthedUserContext.Provider value={user}>
         <Navbar handleSignout={handleSignout} />
         <Routes>
+          <Route path="/" element={<>Hello</>} />
+          {/* <Route path="/workshop" element={< Workshop />} /> */}
+          <Route path='/profiles/:profileId/collectibles' element={<CollectibleList collectibles={[]} setCollectibles={setCollectibles} />} />
           {user ?
             <>
               <Route path='/hello' element={<h1>World</h1>} />
@@ -117,14 +127,18 @@ const App = () => {
               <Route path='/collectibles/create' element={<CollectibleForm handleCreateCollectible={handleCreateCollectible} />} />
               <Route path='/collectibles/:collectibleId' element={<CollectibleDetails handleDeleteCollectible={handleDeleteCollectible} />} />
               <Route path='/collectibles/:collectibleId/edit' element={<CollectibleForm handleUpdateCollectible={handleUpdateCollectible} />} />
+              
+              <Route path='/profiles' element={<ProfileList profiles={profiles} />} />
               <Route path='/profiles/create' element={< ProfileForm handleCreateProfile={handleCreateProfile} />} />
               <Route path='/profiles/:profileId' element={< ProfileDetails handleDeleteProfile={handleDeleteProfile} />} />
               <Route path='/profiles/:profileId/edit' element={< ProfileForm handleUpdateProfile={handleUpdateProfile} />} />
             </>
             :
             <>
-              <Route path="/signup" element={<SignForm setUser={setUser} formType='signup' />} />
-              <Route path="/signin" element={<SignForm setUser={setUser} formType='signin' />} />
+              <Route path='/profiles' element={<ProfileList profiles={profiles} />} />
+              <Route path='/profiles/:profileId' element={< ProfileDetails />} />
+              <Route path="/signup" element={<SignForm setUser={setUser} navigate={navigate} formType='signup' />} />
+              <Route path="/signin" element={<SignForm setUser={setUser} navigate={navigate} formType='signin' />} />
             </>
           }
         </Routes>

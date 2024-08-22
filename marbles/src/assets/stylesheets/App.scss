@@ -1,0 +1,47 @@
+$marbles-color1: #0099ff33;
+// var() unecessary to use variables
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+#root {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+body {
+    background: $marbles-color1;
+}
+
+a {
+    color: blue;
+    text-decoration: none;
+
+    &:hover {
+        color: crimson;
+    }
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    margin: .5rem;
+    border-radius: .5rem;
+    width: 100px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+label, button {
+    font-weight: bold;
+}

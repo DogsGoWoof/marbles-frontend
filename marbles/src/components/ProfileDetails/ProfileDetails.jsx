@@ -1,7 +1,7 @@
-import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import { AuthedUserContext } from '../../App';
+import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
+import { AuthedUserContext } from '../../App';
+
 import * as profileService from '../../services/profileService';
 
 
@@ -12,6 +12,7 @@ const ProfileDetails = (props) => {
     const user = useContext(AuthedUserContext);
 
     const { profileId } = useParams();
+    
     useEffect(() => {
         const fetchProfile = async () => {
             const [profileData] = await profileService.show(profileId);
@@ -24,27 +25,30 @@ const ProfileDetails = (props) => {
     return (
         <>
             { profile ?
-                profile.is_private && profile.user_id !== user.id ? 
+                profile.is_private ? 
                     <h1>Private Collection</h1> 
                     :
                     <main >
                         <h1>{profile.name}</h1>
                     { profile.image ?
-                        <img className="detail-image" src={profile.image} alt={`User provided image of ${profile.name}.`} />
+                        <img className="profile-image" src={profile.image} alt={`User provided image of ${profile.name}.`} />
                         :
                         <img src='' alt={`Placeholder for profile.`}/>
                     }
-                    <h3>{profile.name}'s {profile.collection} Collection</h3>
-
-                    {user.id === profile.user_id ?
+                    <Link to={`/profiles/${profile.id}/collectibles`}>
+                        <h3>{profile.name}'s {profile.collection} Collection</h3>
+                    </Link>
+                    {user ? user.id === profile.user_id ?
                         <>
                             <div className="profile-actions">
                                 <Link to={`/profiles/${profileId}/edit`}>Edit</Link>
-                                <button onClick={() => props.handleDeleteProfile(profileId)}>Delete</button>
+                                {/* <button onClick={() => props.handleDeleteProfile(profileId)}>Delete</button>
+                                    Leaving in for now for convenient superfluous profile creation handling
+                                */}
                             </div>
                         </> 
                         : 
-                        ''
+                        '' : ''
                     }
                     </main>
                 :

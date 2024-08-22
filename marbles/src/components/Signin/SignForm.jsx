@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import * as authService from '../../services/authService';
 
+import '../../assets/stylesheets/SignForm.scss';
 
-const SignForm = ({ setUser, formType }) => {
+const SignForm = ({ setUser, formType, navigate }) => {
 
     // console.log(formType);
 
@@ -36,7 +37,7 @@ const SignForm = ({ setUser, formType }) => {
                 const user = await authService.signin(formData);
                 setUser(user);
             }
-            useNavigate('/');
+            navigate('/collectibles');
         } catch (err) {
             updateMessage(err.message);
         }
@@ -53,52 +54,56 @@ const SignForm = ({ setUser, formType }) => {
     return (
         <main>
             <form autoComplete="off" onSubmit={handleSubmit}>
-                <h1>Log In</h1>
-                <p>{message}</p>
-                <div>
-                    <label htmlFor="email">Username:</label>
-                    <input
-                        type="text"
-                        autoComplete="off"
-                        id="username"
-                        value={formData.username}
-                        name="username"
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="password">Password:</label>
-                    <input
-                        type="password"
-                        autoComplete="off"
-                        id="password"
-                        value={formData.password}
-                        name="password"
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    {formType === 'signup' ?
-                        <>
-                            <label htmlFor="confirm">Confirm Password:</label>
-                            <input
-                                type="password"
-                                id="confirm"
-                                value={passwordConf}
-                                name="passwordConf"
-                                onChange={handleChange}
-                            />
-                            <button disabled={isFormInvalid()}>Sign Up</button>
-                        </>
-                        :
-                        <>
-                            <button>Log In</button>
-                        </>
-                    }
-                    <Link to="/">
-                        <button>Cancel</button>
-                    </Link>
-                </div>
+                <fieldset>
+                    <legend><h1>Log In</h1></legend>
+                    <p>{message}</p>
+                    <div>
+                        <label htmlFor="username">Username:</label>
+                        <input
+                            type="text"
+                            autoComplete="off"
+                            id="username"
+                            value={formData.username}
+                            name="username"
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="password">Password:</label>
+                        <input
+                            type="password"
+                            autoComplete="off"
+                            id="password"
+                            value={formData.password}
+                            name="password"
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div id="buttons-confirmpw">
+                        {formType === 'signup' ?
+                            <>
+                                <div>
+                                    <label htmlFor="confirm">Confirm Password:</label>
+                                    <input
+                                        type="password"
+                                        id="confirm"
+                                        value={passwordConf}
+                                        name="passwordConf"
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                                <button disabled={isFormInvalid()}>Sign Up</button>
+                            </>
+                            :
+                            <>
+                                <button>Log In</button>
+                            </>
+                        }
+                        <Link className="link-wrapper" to="/">
+                            <button className="cancel">Cancel</button>
+                        </Link>
+                    </div>
+                </fieldset>
             </form>
         </main>
     );

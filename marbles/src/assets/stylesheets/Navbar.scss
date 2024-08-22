@@ -1,0 +1,13 @@
+nav {
+    border: 10px groove black;
+    width: 100dvw;
+    border-radius: .5rem;
+    height: 10dvh;
+}
+
+ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+}

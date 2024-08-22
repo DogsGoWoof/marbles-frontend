@@ -1,0 +1,8 @@
+fieldset.form {
+    align-items: center;
+    gap: .5rem;
+}
+
+.form > label::after {
+    content: ':';
+}
