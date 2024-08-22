@@ -12,18 +12,27 @@ const Navbar = ({ handleSignout }) => {
         <nav>
             <ul>
                 <li>
-                    <Link to='/'>Home</Link>
+                    <Link to="/">Home</Link>
                 </li>
                 { user ?
                 <>
+                    { user.profile_id ?
                     <li>
-                        <Link to='/collectibles'>Collection</Link>
+                        <Link to={`profiles/${user.profile_id}`}>{ user.username }</Link>
+                    </li>
+                        :
+                    <li>
+                        <Link to={`profiles/create`}>{ user.username }</Link>
+                    </li>
+                    }
+                    <li>
+                        <Link to="/collectibles">Collection</Link>
                     </li>
                     <li>
-                        <Link to='/collectibles/create'>Add to Collection</Link>
+                        <Link to="/collectibles/create">Add to Collection</Link>
                     </li>
                     <li>
-                    <Link to='' onClick={handleSignout}>
+                    <Link to="" onClick={handleSignout}>
                         Sign Out
                     </Link>
                     </li>

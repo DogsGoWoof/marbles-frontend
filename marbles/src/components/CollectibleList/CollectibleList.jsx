@@ -10,6 +10,7 @@ const CollectibleList = ({ collectibles }) => {
     });
 
     const orderList = (detail, order = 'asc') => {
+        // Need to address letter vs number sorting
         if (order === 'asc') {
             collectibles.sort((a, b) => a[detail] > b[detail]);
         }
@@ -32,7 +33,7 @@ const CollectibleList = ({ collectibles }) => {
     const handleChange = (evt) => {
         const name = evt.target.name;
         const value = evt.target.value;
-        // console.log(typeof value)
+        console.log(value)
         // console.log(evt.target.value)
         setFormData({ ...formData, [name]: value });
         orderList(formData.detail, formData.order);
@@ -78,14 +79,14 @@ const CollectibleList = ({ collectibles }) => {
                 {collectibles.map((collectible) => (
                     <Link key={collectible.id} to={`/collectibles/${collectible.id}`}>
                         <article>
-                            <header>
-                                <div>
-                                    <h2>{collectible.name}</h2>
-                                    <h4>{collectible.rating}</h4>
-                                </div>
-                            </header>
+                            <div>
+                                <h2>{collectible.name}</h2>
+                                <h4>{collectible.rating}</h4>
+                                {/* Change rating to use visual symbol like stars * rating value */}
+                            </div>
                             <p>{collectible.condition}</p>
-                            <p>{collectible.count}</p>
+                            {/* use ruby tags to attach condition value to name as stylistic qualifier? */}
+                            <p>x{collectible.count}</p>
                         </article>
                     </Link>
                 ))}

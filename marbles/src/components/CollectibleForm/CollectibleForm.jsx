@@ -43,7 +43,7 @@ const CollectibleForm = (props) => {
     
     return (
         <main>
-            <h1>{collectibleId ? 'Edit Collectible' : 'New Collectible'}</h1>
+            <h1>{collectibleId ? 'Edit Collectible' : 'Add Collectible'}</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="name-input">Name</label>
                 <input

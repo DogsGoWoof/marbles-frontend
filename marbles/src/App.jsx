@@ -4,13 +4,18 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 //___Components___//
 import Navbar from './components/Navbar/Navbar';
 import SignForm from './components/Signin/SignForm';
+//___Collectible Components___//
 import CollectibleList from './components/CollectibleList/CollectibleList';
 import CollectibleForm from './components/CollectibleForm/CollectibleForm';
 import CollectibleDetails from './components/CollectibleDetails/CollectibleDetails';
+//___Profile Components___//
+import ProfileForm from './components/ProfileForm/ProfileForm';
+import ProfileDetails from './components/ProfileDetails/ProfileDetails';
 
 //___Services___//
 import * as authService from '../src/services/authService';
 import * as collectibleService from './services/collectibleService';
+import * as profileService from '../src/services/profileService';
 
 //___Context___//
 export const AuthedUserContext = createContext(null);
@@ -18,12 +23,13 @@ export const AuthedUserContext = createContext(null);
 const App = () => {
 
   const navigate = useNavigate();
-    // Assigned to variable be used in passed props to child Components
-      // Otherwise hook call becomes invalid
+  // Assigned to variable be used in passed props to child Components
+  // Otherwise hook call becomes invalid
 
   //___States___//
   const [user, setUser] = useState(authService.getUser()); // using the method from authservice
   const [collectibles, setCollectibles] = useState([]);
+  const [profiles, setProfiles] = useState([]);
 
   //___Effects___//
   useEffect(() => {
@@ -34,13 +40,23 @@ const App = () => {
     if (user) fetchAllCollectibles();
   }, [user]);
 
+  useEffect(() => {
+    const fetchAllProfiles = async () => {
+      const profilesData = await profileService.index();
+      setProfiles(profilesData);
+    };
+    if (user) fetchAllProfiles();
+  }, [user]);
+
+
   //___Handlers___//
   const handleSignout = () => {
     authService.signout();
     setUser(null);
   };
 
-    //___C(R)UD Handlers___//
+  //___C(R)UD Handlers___//
+  //___Collectible Handlers___///
   const handleCreateCollectible = async (collectibleFormData) => {
     const newCollectible = await collectibleService.create(collectibleFormData);
     console.log(newCollectible);
@@ -63,30 +79,58 @@ const App = () => {
     navigate('/collectibles');
   };
 
-    return (
-      <>
-        <h1>Hello, World!</h1>
-        <AuthedUserContext.Provider value={user}>
-          <Navbar handleSignout={handleSignout} />
-          <Routes>
-            {user ?
-              <>
-                <Route path='/hello' element={<h1>World</h1>} />
-                <Route path='/collectibles' element={<CollectibleList collectibles={collectibles} />} />
-                <Route path='/collectibles/create' element={<CollectibleForm handleCreateCollectible={handleCreateCollectible} />} />
-                <Route path='/collectibles/:collectibleId' element={<CollectibleDetails handleDeleteCollectible={handleDeleteCollectible} />}/>
-                <Route path='/collectibles/:collectibleId/edit' element={<CollectibleForm handleUpdateCollectible={handleUpdateCollectible} />}/>
-              </>
-              :
-              <>
-                <Route path="/signup" element={<SignForm setUser={setUser} formType='signup' />} />
-                <Route path="/signin" element={<SignForm setUser={setUser} formType='signin' />} />
-              </>
-            }
-          </Routes>
-        </AuthedUserContext.Provider>
-      </>
-    )
-  }
+  //___Profile Handlers___//
+  const handleCreateProfile = async (profileFormData) => {
+    const newProfile = await profileService.create(profileFormData);
+    console.log(newProfile);
+    setProfiles([newProfile, ...profiles]);
+    navigate('/profiles');
+  };
 
-  export default App;
+  const handleUpdateProfile = async (profileId, profileFormData) => {
+    const updatedProfile = await profileService.update(profileId, profileFormData);
+    console.log(updatedProfile);
+
+    setProfiles(profiles.map((profile) => (parseInt(profileId) === profile.id ? updatedProfile : profile)));
+
+    navigate(`/profiles/${profileId}`);
+  };
+
+  const handleDeleteProfile = async (profileId) => {
+    const deletedProfile = await profileService.deleteProfile(profileId);
+    setProfiles(profiles.filter((profile) => profile.id !== deletedProfile.id));
+    navigate('/profiles');
+  };
+
+  //____________________//
+
+  return (
+    <>
+      <h1>Hello, World!</h1>
+      <AuthedUserContext.Provider value={user}>
+        <Navbar handleSignout={handleSignout} />
+        <Routes>
+          {user ?
+            <>
+              <Route path='/hello' element={<h1>World</h1>} />
+              <Route path='/collectibles' element={<CollectibleList collectibles={collectibles} />} />
+              <Route path='/collectibles/create' element={<CollectibleForm handleCreateCollectible={handleCreateCollectible} />} />
+              <Route path='/collectibles/:collectibleId' element={<CollectibleDetails handleDeleteCollectible={handleDeleteCollectible} />} />
+              <Route path='/collectibles/:collectibleId/edit' element={<CollectibleForm handleUpdateCollectible={handleUpdateCollectible} />} />
+              <Route path='/profiles/create' element={< ProfileForm handleCreateProfile={handleCreateProfile} />} />
+              <Route path='/profiles/:profileId' element={< ProfileDetails handleDeleteProfile={handleDeleteProfile} />} />
+              <Route path='/profiles/:profileId/edit' element={< ProfileForm handleUpdateProfile={handleUpdateProfile} />} />
+            </>
+            :
+            <>
+              <Route path="/signup" element={<SignForm setUser={setUser} formType='signup' />} />
+              <Route path="/signin" element={<SignForm setUser={setUser} formType='signin' />} />
+            </>
+          }
+        </Routes>
+      </AuthedUserContext.Provider>
+    </>
+  )
+}
+
+export default App;

@@ -34,10 +34,10 @@ const CollectibleDetails = (props) => {
                             // TO be replaced with Profile table value related to User for site theme settings
                     }
                     <h1>{collectible.name}</h1>
-                    <h3>{collectible.condition}</h3>
-                    <h3>{collectible.rating}</h3>
-                    <h3>{collectible.count}</h3>
-                    <h3>{collectible.date_obtained.slice(0, 16)}</h3>
+                    <h3>Condition: {collectible.condition}</h3>
+                    <h3>Rating: {collectible.rating}</h3>
+                    <h3>Count: {collectible.count}</h3>
+                    <h3>Date Obtained: {collectible.date_obtained.slice(0, 16)}</h3>
 
                     {user.id === collectible.user_id ?
                         <>
