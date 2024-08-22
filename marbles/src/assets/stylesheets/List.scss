@@ -1,7 +1,26 @@
-.collectible {
+.list-container {
     width: 100dvw;
-    border: 1px groove chartreuse;
+    border: 10px groove chartreuse;
     display: flex;
+    flex-flow: column;
     align-items: center;
     justify-content: center;
+}
+
+.collectible {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+.collectible > * {
+    margin: 1rem;
+    outline: 2px solid brown;
+    aspect-ratio: .7;
+    width: 25dvw;
+}
+
+.star-rating {
+    color: yellow;
+    filter: drop-shadow(0 0 1px black);
 }

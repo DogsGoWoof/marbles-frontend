@@ -28,6 +28,12 @@ const CollectibleList = ({ collectibles }) => {
         fetchCollectorCollectibles();
     }, []);
 
+    const handleChange = (evt) => {
+        const name = evt.target.name;
+        const value = evt.target.value;
+        setFormData({ ...formData, [name]: value });
+    };
+
     const orderList = (detail = 'id', order = 'asc') => {
         if (order === 'asc') {
             collectiblesList.sort((a, b) => a[detail] > b[detail]);
@@ -40,10 +46,25 @@ const CollectibleList = ({ collectibles }) => {
     // call on Component render so state updates
     orderList(formData.detail, formData.order);
 
-    const handleChange = (evt) => {
-        const name = evt.target.name;
-        const value = evt.target.value;
-        setFormData({ ...formData, [name]: value });
+    const starRating = (rating) => {
+        let stars = rating <= 5 ? `☆☆☆☆☆` : ``;
+        const blackStar = /☆/
+        if (rating <= 5) {
+            for (let i = 0; i < rating; i++) stars = stars.replace(blackStar, '★');
+        }
+        else if (rating >= 11) {
+            stars = `★ x ${rating}`
+        }
+        else {
+            for (let i = 0; i < rating; i++) {
+                stars += `★`;
+                const allStars = stars.replace('\n', '');
+                if (allStars.length % 5 === 0) {
+                    stars += `\n`
+                }
+            }
+        }
+        return stars ? stars : '☆☆☆☆☆';
     };
 
 
@@ -80,15 +101,13 @@ const CollectibleList = ({ collectibles }) => {
                 <div className="collectible list">
                     {collectiblesList.map((collectible) => (
                         <Link key={collectible.id} to={`/collectibles/${collectible.id}`}>
-                            <article>
+                            <article className="list-item">
                                 <div>
-                                    <h2>{collectible.name}</h2>
-                                    <h4>{collectible.rating}</h4>
+                                    <h2><ruby>{collectible.name}<rp>(</rp><rt>{collectible.condition}</rt><rp>)</rp></ruby></h2>
+                                    <h4 className="star-rating">{starRating(collectible.rating)}</h4>
                                     {/* Change rating to use visual symbol like stars * rating value */}
                                 </div>
-                                <p>{collectible.condition}</p>
-                                {/* use ruby tags to attach condition value to name as stylistic qualifier? */}
-                                <p>x{collectible.count}</p>
+                                <p className="collectible-count">x{collectible.count}</p>
                             </article>
                         </Link>
                     ))}

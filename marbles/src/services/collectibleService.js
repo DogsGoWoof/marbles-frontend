@@ -76,21 +76,10 @@ const update = async (collectibleId, collectibleFormData) => {
     }
 };
 
-const publicIndex = async (profileId) => {
-    try {
-        const res = await fetch(`${BASE_URL}/profiles/${profileId}/collectibles`);
-        return res.json();
-    } catch (error) {
-        console.log(error);
-    }
-};
-
-
 export {
     index,
     show,
     create,
     deleteCollectible,
     update,
-    publicIndex,
 };
