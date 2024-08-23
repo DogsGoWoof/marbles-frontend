@@ -6,8 +6,6 @@ import '../../assets/stylesheets/SignForm.scss';
 
 const SignForm = ({ setUser, formType, navigate }) => {
 
-    // console.log(formType);
-
     //___States___//
     const [message, setMessage] = useState(['']);
     const [formData, setFormData] = useState({
@@ -35,6 +33,7 @@ const SignForm = ({ setUser, formType, navigate }) => {
             }
             else if (formType === 'signin') {
                 const user = await authService.signin(formData);
+                console.log(user);
                 setUser(user);
             }
             navigate('/collectibles');
@@ -42,7 +41,6 @@ const SignForm = ({ setUser, formType, navigate }) => {
             updateMessage(err.message);
         }
     };
-
 
     const { username, password, passwordConf } = formData;
 
@@ -55,7 +53,8 @@ const SignForm = ({ setUser, formType, navigate }) => {
         <main>
             <form autoComplete="off" onSubmit={handleSubmit}>
                 <fieldset>
-                    <legend><h1>Log In</h1></legend>
+                    <legend><h1>{
+                    formType === 'signin' ? 'Log In' : 'Sign Up' }</h1></legend>
                     <p>{message}</p>
                     <div>
                         <label htmlFor="username">Username:</label>
@@ -92,7 +91,7 @@ const SignForm = ({ setUser, formType, navigate }) => {
                                         onChange={handleChange}
                                     />
                                 </div>
-                                <button disabled={isFormInvalid()}>Sign Up</button>
+                                <button className="signup" disabled={isFormInvalid()}>Sign Up</button>
                             </>
                             :
                             <>

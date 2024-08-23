@@ -21,15 +21,12 @@ const ProfileForm = (props) => {
         const fetchProfile = async () => {
             const [profileData] = await profileService.show(profileId);
             setFormData(profileData);
-            console.log(profileData);
         };
         if (profileId) fetchProfile();
     }, [profileId]);
 
     const handleChange = (evt) => {
-        console.log('before set', formData);
         setFormData({ ...formData, [evt.target.name]: evt.target.value });
-        console.log(formData);
     };
 
     const handleSubmit = (evt) => {

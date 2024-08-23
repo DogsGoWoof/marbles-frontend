@@ -6,22 +6,32 @@
 }
 
 .profile-list-image {
-    border: .5rem solid pink;
+    border: .2rem ridge yellow;
     border-radius: 50%;
     aspect-ratio: 1;
-    width: 15dvw;
+    width: 6rem;
 }
 
 .profile-card {
     display: flex;
     align-items: center;
-    border: 1px solid black;
+    border: .3rem double black;
     border-radius: .5rem;
-    width: 30dvw;
+    width: 15rem;
     padding: 1rem .5rem;
+    background: white;
+    justify-content: space-between;
+    aspect-ratio: 2;
+    gap: 1rem;
 }
 
 .profile-card-details {
+    border-left: 1px solid black;
+    text-align: center;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    height: 100%;
     overflow: scroll;
     scrollbar-width: none;
 }

@@ -6,7 +6,9 @@
 $f-roboto-mono: "Roboto Mono";
 $f-lilita-one: "Lilita One";
 $f-merryweather: "Merriweather";
+
 $marbles-color1: #0099ff33;
+$marbles-color2: #0099ff;
 // var() unecessary to use variables
 
 * {
@@ -15,6 +17,7 @@ $marbles-color1: #0099ff33;
     // font-family: $f-roboto-mono;
     font-family: $f-lilita-one;
     // font-family: $f-merryweather;
+    font-weight: 100;
 }
 
 #root {
@@ -29,11 +32,11 @@ body {
 }
 
 a {
-    color: blue;
+    color: #0000ff;
     text-decoration: none;
 
     &:hover {
-        color: crimson;
+        color: gold;
     }
 }
 
@@ -65,7 +68,7 @@ select {
     font-size: 2dvh;
     text-align: center;
     font-weight: bold;
-    border: .5rem solid black;
+    border: .2rem solid black;
     border-radius: 100rem;
 
     &:hover {

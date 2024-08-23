@@ -6,6 +6,8 @@ import * as collectibleService from '../../services/collectibleService';
 
 import '../../assets/stylesheets/CollectibleList.scss';
 import fopiiho1 from '../../assets/images/fopiiho1.png';
+import fopiiho2 from '../../assets/images/fopiiho2.png';
+import alpha from '../../assets/images/alpha.png';
 
 
 const CollectibleList = ({ collectibles }) => {
@@ -23,7 +25,6 @@ const CollectibleList = ({ collectibles }) => {
     useEffect(() => {
         const fetchCollectorCollectibles = async () => {
             const collectiblesData = await collectibleService.index(profileId);
-            // console.log('collectibles data', collectiblesData);
             setCollectiblesList(collectiblesData);
         };
         fetchCollectorCollectibles();
@@ -58,6 +59,22 @@ const CollectibleList = ({ collectibles }) => {
         }
         return stars ? stars : '☆☆☆☆☆';
     };
+
+    const [...fopphi] = document.getElementsByClassName('ioiho');
+    // console.log(fopphi);
+    fopphi.map(image => {
+        image.addEventListener('pointerover', () => {
+            image.classList.toggle('switched');
+            const [...imageClassList] = image.classList;
+            // console.log(imageClassList.includes('ioiho'));
+            if (imageClassList.includes('switched')) {
+                image.src = fopiiho2;
+            }
+            // if (!imageClassList.includes('switched')) {
+            //     image.src = fopiiho1
+            // }
+        });
+    });
 
 
     return (
@@ -103,9 +120,9 @@ const CollectibleList = ({ collectibles }) => {
                                     <img src="" alt={`User provided linked image of ${collectible.name}`} />
                                     :
                                     collectible.count <= 0 ?
-                                        <img className="placeholder-image" src={fopiiho1} alt={`Placeholder image when colelctible count is 0. Fairly Odd Parents - If I had one! meme.`} />
+                                        <img className="placeholder-image ioiho" src={fopiiho1} alt={`Placeholder image when colelctible count is 0. Fairly Odd Parents - If I had one! meme.`} />
                                         :
-                                        <img className="placeholder-image" src="" alt={`Placeholder image of a marble.`} />
+                                        <img className="placeholder-image" src={alpha} alt={`Placeholder image of a marble.`} />
                                 }
                             </article>
                         </Link>

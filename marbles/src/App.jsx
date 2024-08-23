@@ -91,6 +91,7 @@ const App = () => {
   //___Profile Handlers___//
   const handleCreateProfile = async (profileFormData) => {
     const newProfile = await profileService.create(profileFormData);
+    user.profile_id = newProfile.id; // set user.profile_id on profile creation so username link in Navbar no longer leads to create URL
     setProfiles([newProfile, ...profiles]);
     navigate('/profiles');
   };
@@ -129,7 +130,7 @@ const App = () => {
               <Route path='/collectibles/:collectibleId/edit' element={<CollectibleForm handleUpdateCollectible={handleUpdateCollectible} />} />
               
               <Route path='/profiles' element={<ProfileList profiles={profiles} />} />
-              <Route path='/profiles/create' element={< ProfileForm handleCreateProfile={handleCreateProfile} />} />
+              <Route path='/profiles/create' element={< ProfileForm handleCreateProfile={handleCreateProfile} setUser={setUser} />} />
               <Route path='/profiles/:profileId' element={< ProfileDetails handleDeleteProfile={handleDeleteProfile} />} />
               <Route path='/profiles/:profileId/edit' element={< ProfileForm handleUpdateProfile={handleUpdateProfile} />} />
             </>

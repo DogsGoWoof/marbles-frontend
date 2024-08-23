@@ -1,3 +1,5 @@
+$mint: #51ff51;
+
 @mixin listFlex() {
     display: flex;
     flex-flow: row wrap;
@@ -12,6 +14,8 @@
     align-items: center;
     justify-content: center;
     padding: 0 5dvw;
+    background: #d3d3d379;
+    padding: 1rem 0;
 }
 
 .sort-selects {
@@ -23,7 +27,7 @@
     @include listFlex() 
 }
 
-.collectible> * {
+.collectible > * {
     margin: 1rem;
     border: 2px solid brown;
     aspect-ratio: .7;
@@ -50,7 +54,8 @@
     height: 100%;
     border: .5dvh ridge gray;
     background: lightgray;
-    // font-size: (80%);
+    font-size: 2dvw;
+    text-align: center;
 }
 
 .list-item {
@@ -70,8 +75,10 @@
     background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCLLDCGIvZNutHnHMaibQMwW6Oiq3nW1PBmg&s');
     background-size: cover;
     background-position: 0 40%;
+    font-size: 2dvw;
 }
 
 .collectible-condition {
     font-style: italic;
+    color: $mint;
 }

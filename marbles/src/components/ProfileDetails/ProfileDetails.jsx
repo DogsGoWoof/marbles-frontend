@@ -16,6 +16,7 @@ const ProfileDetails = (props) => {
     useEffect(() => {
         const fetchProfile = async () => {
             const [profileData] = await profileService.show(profileId);
+            console.log(profileData);
             setProfile(profileData);
         };
         fetchProfile();
@@ -25,16 +26,20 @@ const ProfileDetails = (props) => {
     return (
         <>
             { profile ?
-                profile.is_private ? 
+                profile.is_private && profile.user_id !== user.id ? 
                     <h1>Private Collection</h1> 
                     :
                     <main >
-                        <h1>{profile.name}</h1>
+                        <h1 className="profile-name">{profile.name}</h1>
                     { profile.image ?
                         <img className="profile-image" src={profile.image} alt={`User provided image of ${profile.name}.`} />
                         :
                         <img src='' alt={`Placeholder for profile.`}/>
                     }
+
+                    {/* Add column to profile model for about_me/collection_rant */}
+                    {/* Add display for item set to profile as display_collectible/favourite_collectible */}
+
                     <Link to={`/profiles/${profile.id}/collectibles`}>
                         <h3>{profile.name}'s {profile.collection} Collection</h3>
                     </Link>
