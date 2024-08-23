@@ -12,6 +12,7 @@ form {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 3dvh;
 }
 
 fieldset {
@@ -23,6 +24,8 @@ fieldset {
     border-radius: .5rem;
     justify-content: center;
     align-items: center;
+    // height: 100%;
+    width: 100%;
 
     div {
         display: flex;

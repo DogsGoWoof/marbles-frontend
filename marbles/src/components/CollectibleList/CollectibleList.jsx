@@ -61,20 +61,22 @@ const CollectibleList = ({ collectibles }) => {
     };
 
     const [...fopphi] = document.getElementsByClassName('ioiho');
-    // console.log(fopphi);
     fopphi.map(image => {
         image.addEventListener('pointerover', () => {
-            image.classList.toggle('switched');
-            const [...imageClassList] = image.classList;
-            // console.log(imageClassList.includes('ioiho'));
-            if (imageClassList.includes('switched')) {
-                image.src = fopiiho2;
-            }
-            // if (!imageClassList.includes('switched')) {
-            //     image.src = fopiiho1
-            // }
+            image.src = fopiiho2;
         });
     });
+
+    // JS to disable list links when no user is logged in
+    const head = document.querySelector('head');
+    const styleEl = document.createElement('style');
+    styleEl.id = 'a-disable';
+    styleEl.innerText = '.collectible.list > a { pointer-events: none; color: gray; }';
+    head.appendChild(styleEl); // append style by default
+    const styleElNode = document.getElementById('a-disable'); // remove style when user exists
+        // need to re-render component on login to remove style during redirect
+    user ? head.removeChild(styleElNode) : '' ;
+    //
 
 
     return (
@@ -109,7 +111,7 @@ const CollectibleList = ({ collectibles }) => {
                 </div>
                 <div className="collectible list">
                     {collectiblesList.map((collectible) => (
-                        <Link key={collectible.id} to={`/collectibles/${collectible.id}`}>
+                        <Link key={collectible.id} to={`/collectibles/${collectible.id}`} >
                             <article className="list-item">
                                 <div className="collectible-list-details">
                                     <h2><ruby>{collectible.name}<rp>(</rp><rt className="collectible-condition">{collectible.condition}</rt><rp>)</rp></ruby></h2>

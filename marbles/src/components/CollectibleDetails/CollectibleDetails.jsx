@@ -4,6 +4,8 @@ import { AuthedUserContext } from '../../App';
 import { useState, useEffect, useContext } from 'react';
 import * as collectibleService from '../../services/collectibleService';
 
+import '../../assets/stylesheets/CollectibleDetails.scss';
+
 
 const CollectibleDetails = (props) => {
 

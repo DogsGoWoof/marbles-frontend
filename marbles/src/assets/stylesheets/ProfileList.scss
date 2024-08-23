@@ -2,7 +2,15 @@
 
 .profile-list {
     display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
     gap: 2.5dvw;
+    height: 70dvh;
+    overflow: scroll;
+    outline: .3rem groove black;
+    border-radius: .5rem;
+    margin: .5rem 1rem;
+    padding: 1rem 0;
 }
 
 .profile-list-image {

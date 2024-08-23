@@ -51,6 +51,7 @@ button {
     margin: .5rem;
     border-radius: .5rem;
     width: 100px;
+    border: .2rem solid black;
 
     &:hover {
         cursor: pointer;
@@ -59,7 +60,7 @@ button {
 
 label,
 button {
-    font-weight: bold;
+    font-size: 70%;
 }
 
 select {
