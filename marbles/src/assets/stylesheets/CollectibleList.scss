@@ -1,0 +1,77 @@
+@mixin listFlex() {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+.list-container {
+    width: 100dvw;
+    border: .5dvh groove #ffffff;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5dvw;
+}
+
+.sort-selects {
+    display: flex;
+    margin: 2dvh;
+}
+
+.collectible {
+    @include listFlex() 
+}
+
+.collectible> * {
+    margin: 1rem;
+    border: 2px solid brown;
+    aspect-ratio: .7;
+    width: 25dvw;
+    padding: .5rem;
+    background: white;
+
+    &:hover {
+        filter: brightness(120%);
+        outline: .2rem solid silver;
+    }
+}
+
+.star-rating {
+    color: yellow;
+    filter: drop-shadow(0 0 1px black);
+}
+
+.collectible-list-details {
+    display: flex;
+    flex-flow: column-reverse;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    border: .5dvh ridge gray;
+    background: lightgray;
+    // font-size: (80%);
+}
+
+.list-item {
+    display: flex;
+    flex-flow: column-reverse;
+    justify-content: space-between;
+    height: 100%;
+    padding: 2dvh 1dvw 1dvh 1dvw;
+}
+
+.placeholder-image {
+    width: 100%;
+    position: relative;
+    border: .5rem ridge saddlebrown;
+    max-height: 50%;
+    aspect-ratio: 1.2;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCLLDCGIvZNutHnHMaibQMwW6Oiq3nW1PBmg&s');
+    background-size: cover;
+    background-position: 0 40%;
+}
+
+.collectible-condition {
+    font-style: italic;
+}

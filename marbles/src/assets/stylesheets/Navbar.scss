@@ -1,8 +1,10 @@
 nav {
     border: 10px groove black;
     width: 100dvw;
-    border-radius: .5rem;
+    border-radius: 10rem;
     height: 10dvh;
+    margin: 1rem;
+    background: #ddda;
 }
 
 ul {
@@ -10,4 +12,22 @@ ul {
     justify-content: space-evenly;
     align-items: center;
     height: 100%;
+    filter: drop-shadow(0 0 1rem silver);
+}
+
+.logo {
+    height: 5dvh;
+    margin-right: .5rem;
+    aspect-ratio: 1;
+    transition: all .2s linear;
+
+    &:hover {
+        transform: rotate(360deg);
+    }
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

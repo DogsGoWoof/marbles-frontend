@@ -4,7 +4,8 @@ import { AuthedUserContext } from '../../App';
 
 import * as collectibleService from '../../services/collectibleService';
 
-import '../../assets/stylesheets/List.scss';
+import '../../assets/stylesheets/CollectibleList.scss';
+import fopiiho1 from '../../assets/images/fopiiho1.png';
 
 
 const CollectibleList = ({ collectibles }) => {
@@ -52,17 +53,8 @@ const CollectibleList = ({ collectibles }) => {
         if (rating <= 5) {
             for (let i = 0; i < rating; i++) stars = stars.replace(blackStar, '★');
         }
-        else if (rating >= 11) {
+        else if (rating >= 6) {
             stars = `★ x ${rating}`
-        }
-        else {
-            for (let i = 0; i < rating; i++) {
-                stars += `★`;
-                const allStars = stars.replace('\n', '');
-                if (allStars.length % 5 === 0) {
-                    stars += `\n`
-                }
-            }
         }
         return stars ? stars : '☆☆☆☆☆';
     };
@@ -102,12 +94,19 @@ const CollectibleList = ({ collectibles }) => {
                     {collectiblesList.map((collectible) => (
                         <Link key={collectible.id} to={`/collectibles/${collectible.id}`}>
                             <article className="list-item">
-                                <div>
-                                    <h2><ruby>{collectible.name}<rp>(</rp><rt>{collectible.condition}</rt><rp>)</rp></ruby></h2>
+                                <div className="collectible-list-details">
+                                    <h2><ruby>{collectible.name}<rp>(</rp><rt className="collectible-condition">{collectible.condition}</rt><rp>)</rp></ruby></h2>
                                     <h4 className="star-rating">{starRating(collectible.rating)}</h4>
-                                    {/* Change rating to use visual symbol like stars * rating value */}
+                                    <p className="collectible-count">x{collectible.count}</p>
                                 </div>
-                                <p className="collectible-count">x{collectible.count}</p>
+                                {collectible.image ?
+                                    <img src="" alt={`User provided linked image of ${collectible.name}`} />
+                                    :
+                                    collectible.count <= 0 ?
+                                        <img className="placeholder-image" src={fopiiho1} alt={`Placeholder image when colelctible count is 0. Fairly Odd Parents - If I had one! meme.`} />
+                                        :
+                                        <img className="placeholder-image" src="" alt={`Placeholder image of a marble.`} />
+                                }
                             </article>
                         </Link>
                     ))}

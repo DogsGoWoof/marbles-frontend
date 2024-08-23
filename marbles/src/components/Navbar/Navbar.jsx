@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { AuthedUserContext } from '../../App';
 
 import '../../assets/stylesheets/Navbar.scss';
-
+import marble1 from '../../assets/images/marble1.svg';
 
 const Navbar = ({ handleSignout }) => {
 
@@ -13,7 +13,12 @@ const Navbar = ({ handleSignout }) => {
         <nav>
             <ul>
                 <li>
-                    <Link to="/">Home</Link>
+                    <Link to="/">
+                        <div className="logo-container">
+                            <img className="logo" src={marble1} alt="marbles logo"></img>
+                            <p>marbles</p>
+                        </div>
+                    </Link>
                 </li>
                 {user ?
                     <>

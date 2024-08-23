@@ -1,0 +1,27 @@
+@use 'CollectibleList'; // Not necessary due to global targeting but using to note where the base style is coming from
+
+.profile-list {
+    display: flex;
+    gap: 2.5dvw;
+}
+
+.profile-list-image {
+    border: .5rem solid pink;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    width: 15dvw;
+}
+
+.profile-card {
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: .5rem;
+    width: 30dvw;
+    padding: 1rem .5rem;
+}
+
+.profile-card-details {
+    overflow: scroll;
+    scrollbar-width: none;
+}
