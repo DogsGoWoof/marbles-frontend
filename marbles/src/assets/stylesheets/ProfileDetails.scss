@@ -64,10 +64,13 @@
     align-self: end;
 }
 
-iframe {
+.profile-about {
     grid-row: 4;
-    border: .3rem ridge black;
-    height: (9/16);
+
+    iframe {
+        border: .3rem ridge black;
+        height: (9/16);
+    }
 }
 
 .profile-favourite {

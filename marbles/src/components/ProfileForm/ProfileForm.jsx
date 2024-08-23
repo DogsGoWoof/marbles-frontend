@@ -12,6 +12,8 @@ const ProfileForm = (props) => {
         name: '',
         image: '',
         collection: '',
+        about: '',
+        favourite: '',
         is_private: true,
     });
 
@@ -69,9 +71,29 @@ const ProfileForm = (props) => {
                         value={formData.collection}
                         onChange={handleChange}
                     />
+                    <label htmlFor="about-input">About</label>
+                    <textarea
+                        type="text"
+                        name="about"
+                        id="about-input"
+                        value={formData.about}
+                        onChange={handleChange}
+                    ></textarea>
+                    <label htmlFor="favourite-input">Favourite</label>
+                    <select
+                        name="favourite"
+                        id="favourite"
+                        value={formData.favourite}
+                        onChange={handleChange}
+                    >
+                        { }
+                        {/* fetch all collectibles where user_id = user.id/profile.user_id
+                            and create an option for each with value of collectible.id and text
+                            of collectible.name
+                        */}
+                    </select>
                     <label htmlFor="is_private-input">Privacy Setting</label>
                     <select
-                        type="number"
                         name="is_private"
                         id="is_private-input"
                         value={formData.is_private}

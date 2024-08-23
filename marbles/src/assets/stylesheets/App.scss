@@ -47,21 +47,21 @@ ul {
 
 button {
     padding: 10px;
-    border: none;
     margin: .5rem;
     border-radius: .5rem;
     width: 100px;
     border: .2rem solid black;
+    font-size: 3dvh;
 
     &:hover {
         cursor: pointer;
     }
 }
 
-label,
-button {
-    font-size: 70%;
-}
+// label,
+// button {
+//     font-size: 70%;
+// }
 
 select {
     margin: 0 1rem;
@@ -73,6 +73,12 @@ select {
     border-radius: 100rem;
 
     &:hover {
-        background: coral;
+        // background: conic-gradient(from 90deg, yellow, blue);
+        background: $marbles-color2;
+
+        * {
+            color: white;
+            font-weight: bold;
+        }
     }
 }

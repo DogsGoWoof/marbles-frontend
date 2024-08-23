@@ -1,0 +1,43 @@
+.collectible-details {
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    border: 10px solid greenyellow;
+
+    * {
+        border: 5px solid purple;
+        background: cyan;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.collectible-name {
+    grid-row: 1;
+}
+
+.collectible-image {
+    grid-row: 2;
+    height: 30dvh;
+    justify-self: center;
+    background: white;
+}
+
+.actions {
+
+    a {
+        font-size: 3dvh;
+        padding: .64rem 2rem;
+        margin: .5rem;
+        border: 5px solid blue;
+        border-radius: .5rem;
+        background: yellow;
+        color: black;
+    }
+
+    .delete {
+        background: red;
+    }
+}

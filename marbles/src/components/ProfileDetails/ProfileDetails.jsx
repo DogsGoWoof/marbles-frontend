@@ -39,10 +39,10 @@ const ProfileDetails = (props) => {
 
                         {/* Add column to profile model for about_me/collection_rant */}
                         {profile.about ?
-                            <p>{profile.about}</p>
+                            <p className="profile-about">{profile.about}</p>
                             :
                             // <img src="https://i.redd.it/pbdg4l7i1a381.png" alt={`The Simpsons - "I just think they're neat!" meme.`} />
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/Y0PKG5-t3zU?si=CKEK8sdagTWJR7DU&v=50" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            <iframe className="profile-about" width="560" height="315" src="https://www.youtube.com/embed/Y0PKG5-t3zU?si=CKEK8sdagTWJR7DU&v=50" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         }
                         {/* Add display for item set to profile as display_collectible/favourite_collectible */}
                         <h2 className="about">About Collection</h2>
@@ -57,9 +57,9 @@ const ProfileDetails = (props) => {
                         </Link>
                         {user ? user.id === profile.user_id ?
                             <>
-                                <div className="profile-actions">
+                                <div className="profile-actions actions">
                                     <Link to={`/profiles/${profileId}/edit`}>Edit</Link>
-                                    {/* <button onClick={() => props.handleDeleteProfile(profileId)}>Delete</button>
+                                    {/* <button className="delete" onClick={() => props.handleDeleteProfile(profileId)}>Delete</button>
                                     Leaving in for now for convenient superfluous profile creation handling
                                 */}
                                 </div>

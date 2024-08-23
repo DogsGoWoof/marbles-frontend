@@ -28,24 +28,24 @@ const CollectibleDetails = (props) => {
         <>
             {collectible ?
             // Component error of null value on collectible, ternary used to prevent breaking
-                <main >
+                <main className="collectible-details">
                     { collectible.image ?
-                        <img className="detail-image" src={collectible.image} alt={`User provided image of ${collectible.name}.`} />
+                        <img className="collectible-image" src={collectible.image} alt={`User provided image of ${collectible.name}.`} />
                         :
-                        <img src='' alt={`Placeholder for collectible.`}/>
+                        <img className="collectible-image" src='https://cdn.inspireuplift.com/uploads/images/seller_products/1689756971_03.png' alt={`Placeholder for collectible.`}/>
                             // TO be replaced with Profile table value related to User for site theme settings
                     }
-                    <h1>{collectible.name}</h1>
-                    <h3>Condition: {collectible.condition}</h3>
-                    <h3>Rating: {collectible.rating}</h3>
-                    <h3>Count: {collectible.count}</h3>
-                    <h3>Date Obtained: {collectible.date_obtained.slice(0, 16)}</h3>
+                    <h1 className="collectible-name">{collectible.name}</h1>
+                    <h3 className="collectible-condition">Condition: {collectible.condition}</h3>
+                    <h3 className="collectible-rating">Rating: {collectible.rating}</h3>
+                    <h3 className="collectible-count">Count: {collectible.count}</h3>
+                    <h3 className="collectible-date">Date Obtained: {collectible.date_obtained.slice(0, 16)}</h3>
 
                     {user.id === collectible.user_id ?
                         <>
-                            <div className="collectible-actions">
+                            <div className="collectible-actions actions">
                                 <Link to={`/collectibles/${collectibleId}/edit`}>Edit</Link>
-                                <button onClick={() => props.handleDeleteCollectible(collectibleId)}>Delete</button>
+                                <button className="delete" onClick={() => props.handleDeleteCollectible(collectibleId)}>Delete</button>
                             </div>
                         </>
                         : null
