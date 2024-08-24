@@ -8,9 +8,32 @@ const getUser = () => {
   return user;
 };
 
+const getUserWithProfileId = async () => {
+  try {
+    const res = await fetch(`${BACKEND_URL}/auth/user-profile`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
+    });
+    const json = await res.json();
+
+    if (json.error) {
+      throw new Error(json.error);
+    }
+
+    localStorage.setItem('token', json.token);
+    const user = JSON.parse(atob(json.token.split('.')[1]));
+    return user;
+  } catch (err) {
+    throw new Error(err);
+  }
+}
+
 const signup = async (formData) => {
   try {
-      const res = await fetch(`${BACKEND_URL}/auth/signup`, {
+    const res = await fetch(`${BACKEND_URL}/auth/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData),
@@ -52,4 +75,4 @@ const signout = () => {
   localStorage.removeItem('token');
 };
 
-export { signup, signin, getUser, signout };
+export { signup, signin, getUser, signout, getUserWithProfileId };

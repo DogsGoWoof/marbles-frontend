@@ -45,7 +45,6 @@ const CollectibleList = ({ collectibles }) => {
         }
     }
 
-    // call on Component render so state updates
     orderList(formData.detail, formData.order);
 
     const starRating = (rating) => {
@@ -59,6 +58,9 @@ const CollectibleList = ({ collectibles }) => {
         }
         return stars ? stars : '☆☆☆☆☆';
     };
+    // Add logic styling for negative rating
+        // probably poop emoji
+
 
     const [...fopphi] = document.getElementsByClassName('ioiho');
     fopphi.map(image => {

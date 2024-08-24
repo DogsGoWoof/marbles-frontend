@@ -31,11 +31,9 @@ import '../src/assets/stylesheets/App.scss';
 const App = () => {
 
   const navigate = useNavigate();
-  // Assigned to variable be used in passed props to child Components
-  // Otherwise hook call becomes invalid
 
   //___States___//
-  const [user, setUser] = useState(authService.getUser()); // using the method from authservice
+  const [user, setUser] = useState(authService.getUser());
   const [collectibles, setCollectibles] = useState([]);
   const [profiles, setProfiles] = useState([]);
 
@@ -91,17 +89,15 @@ const App = () => {
   //___Profile Handlers___//
   const handleCreateProfile = async (profileFormData) => {
     const newProfile = await profileService.create(profileFormData);
-    user.profile_id = newProfile.id; // set user.profile_id on profile creation so username link in Navbar no longer leads to create URL
+    const userWithProfile = await authService.getUserWithProfileId();
+    setUser(userWithProfile);
     setProfiles([newProfile, ...profiles]);
     navigate('/profiles');
   };
 
   const handleUpdateProfile = async (profileId, profileFormData) => {
     const updatedProfile = await profileService.update(profileId, profileFormData);
-    console.log(updatedProfile);
-
     setProfiles(profiles.map((profile) => (parseInt(profileId) === profile.id ? updatedProfile : profile)));
-
     navigate(`/profiles/${profileId}`);
   };
 
@@ -111,7 +107,6 @@ const App = () => {
     navigate('/profiles');
   };
 
-  //____________________//
 
   return (
     <>
@@ -128,11 +123,11 @@ const App = () => {
               <Route path='/collectibles/create' element={<CollectibleForm handleCreateCollectible={handleCreateCollectible} />} />
               <Route path='/collectibles/:collectibleId' element={<CollectibleDetails handleDeleteCollectible={handleDeleteCollectible} />} />
               <Route path='/collectibles/:collectibleId/edit' element={<CollectibleForm handleUpdateCollectible={handleUpdateCollectible} />} />
-              
+
               <Route path='/profiles' element={<ProfileList profiles={profiles} />} />
-              <Route path='/profiles/create' element={< ProfileForm handleCreateProfile={handleCreateProfile} setUser={setUser} />} />
+              <Route path='/profiles/create' element={< ProfileForm handleCreateProfile={handleCreateProfile} setUser={setUser} collectibles={collectibles} />} />
               <Route path='/profiles/:profileId' element={< ProfileDetails handleDeleteProfile={handleDeleteProfile} />} />
-              <Route path='/profiles/:profileId/edit' element={< ProfileForm handleUpdateProfile={handleUpdateProfile} />} />
+              <Route path='/profiles/:profileId/edit' element={< ProfileForm handleUpdateProfile={handleUpdateProfile} collectibles={collectibles} />} />
             </>
             :
             <>

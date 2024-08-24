@@ -1,3 +1,12 @@
+.collectible-form-container {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    padding-bottom: 10rem;
+}
+
 fieldset.form {
     align-items: center;
     gap: .5rem;
@@ -5,4 +14,10 @@ fieldset.form {
 
 .form > label::after {
     content: ':';
+}
+
+.hello-there {
+    width: 50%;
+    border: .2rem solid white;
+    outline: 1rem solid black;
 }

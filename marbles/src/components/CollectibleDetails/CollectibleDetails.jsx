@@ -27,13 +27,12 @@ const CollectibleDetails = (props) => {
     return (
         <>
             {collectible ?
-            // Component error of null value on collectible, ternary used to prevent breaking
                 <main className="collectible-details">
                     { collectible.image ?
                         <img className="collectible-image" src={collectible.image} alt={`User provided image of ${collectible.name}.`} />
                         :
                         <img className="collectible-image" src='https://cdn.inspireuplift.com/uploads/images/seller_products/1689756971_03.png' alt={`Placeholder for collectible.`}/>
-                            // TO be replaced with Profile table value related to User for site theme settings
+                            // To be replaced with Profile table value related to User for site theme settings
                     }
                     <h1 className="collectible-name">{collectible.name}</h1>
                     <h3 className="collectible-condition">Condition: {collectible.condition}</h3>

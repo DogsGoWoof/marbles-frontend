@@ -9,7 +9,6 @@ $f-merryweather: "Merriweather";
 
 $marbles-color1: #0099ff33;
 $marbles-color2: #0099ff;
-// var() unecessary to use variables
 
 * {
     box-sizing: border-box;
@@ -52,16 +51,14 @@ button {
     width: 100px;
     border: .2rem solid black;
     font-size: 3dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &:hover {
         cursor: pointer;
     }
 }
-
-// label,
-// button {
-//     font-size: 70%;
-// }
 
 select {
     margin: 0 1rem;
@@ -73,7 +70,6 @@ select {
     border-radius: 100rem;
 
     &:hover {
-        // background: conic-gradient(from 90deg, yellow, blue);
         background: $marbles-color2;
 
         * {

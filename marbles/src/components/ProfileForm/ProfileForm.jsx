@@ -13,7 +13,7 @@ const ProfileForm = (props) => {
         image: '',
         collection: '',
         about: '',
-        favourite: '',
+        favourite: props.collectibles[0]?.id ? props.collectibles[0].id : 0,
         is_private: true,
     });
 
@@ -86,11 +86,7 @@ const ProfileForm = (props) => {
                         value={formData.favourite}
                         onChange={handleChange}
                     >
-                        { }
-                        {/* fetch all collectibles where user_id = user.id/profile.user_id
-                            and create an option for each with value of collectible.id and text
-                            of collectible.name
-                        */}
+                        {props.collectibles.map(collectible => <option key={collectible.id} value={collectible.id}>{collectible.name}</option>)}
                     </select>
                     <label htmlFor="is_private-input">Privacy Setting</label>
                     <select

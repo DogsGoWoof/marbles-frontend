@@ -42,8 +42,8 @@ const CollectibleForm = (props) => {
 
 
     return (
-        <main>
-
+        <main className="collectible-form-container">
+            { collectibleId ? '' : <img className="hello-there" src="https://i.imgflip.com/3btxsp.jpg" alt="General Grievous meme - This will make a fine addition to my collection" />}
             <form onSubmit={handleSubmit}>
                 <fieldset className="form" >
                     <legend><h1>{collectibleId ? 'Edit Collectible' : 'Add Collectible'}</h1></legend>
