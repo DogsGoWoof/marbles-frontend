@@ -33,13 +33,17 @@ const ProfileList = ({ profiles }) => {
         orderList(formData.detail, formData.order);
     };
 
-    const head = document.querySelector('head');
-    const styleEl = document.createElement('style');
-    styleEl.id = 'a-disable';
-    styleEl.innerText = '.list > a { pointer-events: none; color: gray; }';
-    head.appendChild(styleEl);
-    const styleElNode = document.getElementById('a-disable');
-    user ? head.removeChild(styleElNode) : '' ;
+    const checkUser = () => {
+        const head = document.querySelector('head');
+        const styleEl = document.createElement('style');
+        styleEl.id = 'a-disable';
+        styleEl.innerText = '.list > a { pointer-events: none; color: gray; }';
+        head.appendChild(styleEl);
+        const styleElNode = document.getElementById('a-disable');
+        user ? head.removeChild(styleElNode) : '';
+    }
+
+    checkUser();
 
 
     return (

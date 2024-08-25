@@ -1,4 +1,4 @@
-$mint: #51ff51;
+@import 'Variables';
 
 @mixin listFlex() {
     display: flex;
@@ -66,19 +66,18 @@ $mint: #51ff51;
     padding: 2dvh 1dvw 1dvh 1dvw;
 }
 
-.placeholder-image {
+.placeholder-image, .collectible-list-image {
     width: 100%;
     position: relative;
     border: .5rem ridge saddlebrown;
-    max-height: 50%;
-    aspect-ratio: 1.2;
+    aspect-ratio: 1;
     background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCLLDCGIvZNutHnHMaibQMwW6Oiq3nW1PBmg&s');
     background-size: cover;
     background-position: 0 40%;
     font-size: 2dvw;
 }
 
-.collectible-condition {
+.collectible-list-condition {
     font-style: italic;
     color: $mint;
 }

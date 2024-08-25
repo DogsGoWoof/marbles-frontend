@@ -54,7 +54,7 @@ const SignForm = ({ setUser, formType, navigate }) => {
             <form autoComplete="off" onSubmit={handleSubmit}>
                 <fieldset>
                     <legend><h1>{
-                    formType === 'signin' ? 'Log In' : 'Sign Up' }</h1></legend>
+                        formType === 'signin' ? 'Log In' : 'Sign Up'}</h1></legend>
                     <p>{message}</p>
                     <div>
                         <label htmlFor="username">Username:</label>
@@ -95,12 +95,14 @@ const SignForm = ({ setUser, formType, navigate }) => {
                             </>
                             :
                             <>
-                                <button>Log In</button>
+                                <button className="login">Log In</button>
                             </>
                         }
-                        <Link className="link-wrapper" to="/">
-                            <button className="cancel">Cancel</button>
-                        </Link>
+                        <div className="cancel">
+                            <Link className="link-wrapper" to="/">
+                                <button className="cancel">Cancel</button>
+                            </Link>
+                        </div>
                     </div>
                 </fieldset>
             </form>

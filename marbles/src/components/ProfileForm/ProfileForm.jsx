@@ -44,7 +44,7 @@ const ProfileForm = (props) => {
     return (
         <main>
             <form onSubmit={handleSubmit}>
-                <fieldset className="form" >
+                <fieldset className="form profile-form" >
                     <legend><h1>{profileId ? 'Edit Profile' : 'Create Profile'}</h1></legend>
                     <label htmlFor="name-input">Name</label>
                     <input
@@ -86,6 +86,7 @@ const ProfileForm = (props) => {
                         value={formData.favourite}
                         onChange={handleChange}
                     >
+                        <option value="0" hidden></option>
                         {props.collectibles.map(collectible => <option key={collectible.id} value={collectible.id}>{collectible.name}</option>)}
                     </select>
                     <label htmlFor="is_private-input">Privacy Setting</label>

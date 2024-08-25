@@ -59,7 +59,7 @@ const CollectibleList = ({ collectibles }) => {
         return stars ? stars : '☆☆☆☆☆';
     };
     // Add logic styling for negative rating
-        // probably poop emoji
+    // probably poop emoji
 
 
     const [...fopphi] = document.getElementsByClassName('ioiho');
@@ -70,15 +70,17 @@ const CollectibleList = ({ collectibles }) => {
     });
 
     // JS to disable list links when no user is logged in
-    const head = document.querySelector('head');
-    const styleEl = document.createElement('style');
-    styleEl.id = 'a-disable';
-    styleEl.innerText = '.collectible.list > a { pointer-events: none; color: gray; }';
-    head.appendChild(styleEl); // append style by default
-    const styleElNode = document.getElementById('a-disable'); // remove style when user exists
-        // need to re-render component on login to remove style during redirect
-    user ? head.removeChild(styleElNode) : '' ;
-    //
+    const checkUser = () => {
+        const head = document.querySelector('head');
+        const styleEl = document.createElement('style');
+        styleEl.id = 'a-disable';
+        styleEl.innerText = '.list > a { pointer-events: none; color: gray; }';
+        head.appendChild(styleEl);
+        const styleElNode = document.getElementById('a-disable');
+        user ? head.removeChild(styleElNode) : '';
+    }
+
+    checkUser();
 
 
     return (
@@ -116,17 +118,17 @@ const CollectibleList = ({ collectibles }) => {
                         <Link key={collectible.id} to={`/collectibles/${collectible.id}`} >
                             <article className="list-item">
                                 <div className="collectible-list-details">
-                                    <h2><ruby>{collectible.name}<rp>(</rp><rt className="collectible-condition">{collectible.condition}</rt><rp>)</rp></ruby></h2>
+                                    <h2><ruby>{collectible.name}<rp>(</rp><rt className="collectible-list-condition">{collectible.condition}</rt><rp>)</rp></ruby></h2>
                                     <h4 className="star-rating">{starRating(collectible.rating)}</h4>
                                     <p className="collectible-count">x{collectible.count}</p>
                                 </div>
                                 {collectible.image ?
-                                    <img src={collectible.image} alt={`User provided linked image of ${collectible.name}`} />
+                                    <img className="collectible-list-image" src={collectible.image} alt={`User provided linked image of ${collectible.name}`} />
                                     :
                                     collectible.count <= 0 ?
-                                        <img className="placeholder-image ioiho" src={fopiiho1} alt={`Placeholder image when colelctible count is 0. Fairly Odd Parents - If I had one! meme.`} />
+                                        <img className="placeholder-image ioiho collectible-list-image" src={fopiiho1} alt={`Placeholder image when colelctible count is 0. Fairly Odd Parents - If I had one! meme.`} />
                                         :
-                                        <img className="placeholder-image" src={alpha} alt={`Placeholder image of a marble.`} />
+                                        <img className="placeholder-image collectible-list-image" src={alpha} alt={`Placeholder image of a marble.`} />
                                 }
                             </article>
                         </Link>

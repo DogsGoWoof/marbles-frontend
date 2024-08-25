@@ -28,6 +28,10 @@ A webapp for keeping track of your marbles, or whatever you might collect.
 [Site Background](https://heropatterns.com/)  
 [Fonts](https://fonts.google.com/)
 [Star Characters](https://www.alt-codes.net/star_alt_code.php)  
+
+#### Code References  
+[Using variables across .scss files](https://stackoverflow.com/a/17599322/25952288)  
+
 #### Media Resource Links  
 [The Simpsons - "I just think they're neat!" Video](https://www.youtube.com/watch?v=Y0PKG5-t3zU) [Image](https://i.redd.it/pbdg4l7i1a381.png)  
 [Pokemon - Shiny Charizard Card](https://www.dicebreaker.com/games/pokemon-trading-card-game/news/shiny-charizard-pokemon-card-auction-record)  

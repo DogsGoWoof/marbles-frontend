@@ -1,6 +1,8 @@
+@import 'Variables';
+
 .profile-details {
     display: grid;
-    grid-template-rows: auto auto auto auto;
+    grid-template-rows: auto;
     grid-template-columns: 1fr 1fr 1fr;
     border: 10px groove black;
     border-radius: .5rem;
@@ -11,13 +13,10 @@
     bottom: 0;
     overflow: scroll;
     padding: 1rem;
-    background: linear-gradient(#fffa, #bbba);
+    background: linear-gradient(#fffa, #ddda);
     gap: 1rem;
 
     * {
-        // remove
-        // border: 2px solid black;
-        background: no-repeat center radial-gradient(white 50%, blue 50%);
         background-size: 30dvw 30dvw;
         justify-self: center;
         display: flex;
@@ -27,54 +26,99 @@
     }
 }
 
-.profile-name {
-    grid-row: 2;
-    font-size: 3dvw;
-    text-align: center;
-}
-
-.collection-link {
-    border: 5px solid black;
-    aspect-ratio: 1;
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background: white;
-
-    &:hover {  
-        border: .3rem outset silver;
-    }
-}
-
-.profile-image {
-    border: .4rem ridge yellow;
-    // border-radius: 50%;
-    aspect-ratio: 1;
-}
-
-.about {
-    grid-row: 3;
-    height: 50%;
-    align-self: end;
-}
-
-.profile-about {
-    grid-row: 4;
-
-    iframe {
-        border: .3rem ridge black;
-        height: (9/16);
-    }
-}
-
-.profile-favourite {
-    box-shadow: 0 0 1rem gold;
-    filter: saturate(105%);
-    border-radius: .5rem;
-    grid-row: 2 / span 2;
-    grid-column: 2;
+.profile-column {
     display: flex;
     flex-flow: column;
+    justify-content: flex-start;
+}
+
+.header {
+    grid-row: 1;
+    height: 5dvh;
+    border: .3rem groove black;
+    border-radius: .5rem;
+    margin-bottom: .5rem;
+}
+
+
+.column-1 {
+    grid-column: 1;
+
+    .profile-name {
+        font-size: 3dvw;
+    }
+
+    .profile-image {
+        aspect-ratio: 1;
+        align-self: center;
+        grid-row: 2;
+        grid-column: 1;
+    }
+}
+
+
+.column-2 {
+    grid-column: 2;
+
+    .profile-favourite {
+        border-radius: .5rem;
+        grid-row: 3;
+        grid-column: 2;
+        display: flex;
+        flex-flow: column;
+        align-self: center;
+        text-align: center;
+        height: fit-content;
+        background: $marbles-color1;
+        border: .1rem solid skyblue;
+    
+        &:hover {
+            box-shadow: 0 0 1rem gold;
+            filter: saturate(105%);
+            cursor: none;
+            cursor: zoom-in;
+        }
+    
+        .profile-favourite-image {
+    
+            &:active {
+                scale: 2;
+            }
+        }
+    }
+    
+    .collection-link {
+        grid-row: 2;
+        grid-column: 2;
+        border: .3rem inset black;
+        border-radius: .5rem;
+        aspect-ratio: 1;
+        height: 10dvh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 1rem;
+        background: $marbles-color1;
+    
+        a {
+            height: 100%;
+        }
+    
+        &:hover {
+            border: .3rem outset silver;
+        }
+    }
+}
+
+.column-3 {
+    grid-column: 3;
+
+    .about {
+        width: 100%;
+        height: 100%;
+        background: #f5f5f588;
+        border: .3rem groove black;
+        border-radius: .5rem;
+    }
 }

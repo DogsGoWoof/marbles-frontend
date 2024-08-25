@@ -35,7 +35,7 @@ const Landing = () => {
             <section className="landing-body landing">
                 <figure>
                     <img className="caw-collect image" src="https://listverse.com/wp-content/uploads/2019/02/10-crow-picking-up-trash.jpg" alt="A picture og a crow holding a piece of tin foil in its beak." />
-                    <figcaption className="caption">Caw Collect, the Collection Crow</figcaption>
+                    <figcaption className="caption">Caw Collect</figcaption>
                 </figure>
             </section>
         </>

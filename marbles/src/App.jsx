@@ -14,7 +14,7 @@ import ProfileList from './components/ProfileList/ProfileList';
 import ProfileForm from './components/ProfileForm/ProfileForm';
 import ProfileDetails from './components/ProfileDetails/ProfileDetails';
 
-// import Workshop from '../../Workshop';
+// import Workshop from '../Workshop';
 
 
 //___Services___//
@@ -27,6 +27,7 @@ export const AuthedUserContext = createContext(null);
 
 //___Styles___//
 import '../src/assets/stylesheets/App.scss';
+import '../src/assets/stylesheets/Variables.scss';
 
 
 const App = () => {

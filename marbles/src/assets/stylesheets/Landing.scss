@@ -1,12 +1,4 @@
-@mixin circleBG {
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    width: 50dvw;
-}
+@import 'Variables';
 
 .landing {
     margin: 1rem;
