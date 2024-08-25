@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthedUserContext } from '../../App';
 
 import '../../assets/stylesheets/ProfileList.scss';
 import ga from '../../assets/images/ga.svg';
@@ -10,6 +11,8 @@ const ProfileList = ({ profiles }) => {
         detail: 'id',
         order: 'asc',
     });
+
+    const user = useContext(AuthedUserContext);
 
     const orderList = (detail, order = 'asc') => {
         if (order === 'asc') {
@@ -26,11 +29,17 @@ const ProfileList = ({ profiles }) => {
     const handleChange = (evt) => {
         const name = evt.target.name;
         const value = evt.target.value;
-        console.log(value)
-        // console.log(evt.target.value)
         setFormData({ ...formData, [name]: value });
         orderList(formData.detail, formData.order);
     };
+
+    const head = document.querySelector('head');
+    const styleEl = document.createElement('style');
+    styleEl.id = 'a-disable';
+    styleEl.innerText = '.list > a { pointer-events: none; color: gray; }';
+    head.appendChild(styleEl);
+    const styleElNode = document.getElementById('a-disable');
+    user ? head.removeChild(styleElNode) : '' ;
 
 
     return (

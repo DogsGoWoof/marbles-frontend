@@ -1,4 +1,13 @@
 $marbles-color1: #0099ff33;
+@mixin circleBG {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    width: 50dvw;
+}
 
 form {
     margin-top: 10dvh;

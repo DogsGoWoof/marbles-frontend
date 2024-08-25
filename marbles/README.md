@@ -35,6 +35,8 @@ A webapp for keeping track of your marbles, or whatever you might collect.
 Fairly Odd Parents - If I had one! [Image 1](https://x.com/realhartman/status/876449278784282626) [Image 2](https://vlipsy.com/vlip/fairly-odd-parents-if-i-had-one-dOMWLeiw)  
 [Star Wars - This will make a fine additon to my collection](https://imgflip.com/memetemplate/201271129/This-will-make-a-fine-addition-to-my-collection)  
 [30 Rock - Jack Donaghy Cookie Jar Collection](https://138daysof30rock.wordpress.com/wp-content/uploads/2014/07/screenshot-2014-07-17-19-08-06.png)  
+[Crow Image](https://listverse.com/2019/02/08/top-10-unusual-things-crows-can-do/)
+[Pack Rat Image](http://s437713483.onlinehome.us/the-original-pack-rat)
 
 ### Next Steps  
 - Add search by entered text functionality  

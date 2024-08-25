@@ -121,7 +121,7 @@ const CollectibleList = ({ collectibles }) => {
                                     <p className="collectible-count">x{collectible.count}</p>
                                 </div>
                                 {collectible.image ?
-                                    <img src="" alt={`User provided linked image of ${collectible.name}`} />
+                                    <img src={collectible.image} alt={`User provided linked image of ${collectible.name}`} />
                                     :
                                     collectible.count <= 0 ?
                                         <img className="placeholder-image ioiho" src={fopiiho1} alt={`Placeholder image when colelctible count is 0. Fairly Odd Parents - If I had one! meme.`} />

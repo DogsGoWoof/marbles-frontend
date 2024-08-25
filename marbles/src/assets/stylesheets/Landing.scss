@@ -1,0 +1,46 @@
+@mixin circleBG {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    width: 50dvw;
+}
+
+.landing {
+    margin: 1rem;
+}
+
+.landing-head, .landing-body {
+    text-align: center;
+    background: #fffa;
+    border: .5rem groove black;
+    // border-radius: .5rem;
+    @include circleBG();
+}
+
+.landing-title {
+    font-size: 5dvh;
+}
+
+.landing-message {
+    font-style: italic;
+    font-size: 3dvh;
+}
+
+.caw-collect {
+    width: 60dvw;
+    border: .4rem solid black;
+
+    @media (min-width: 1200px) {
+        width: 40dvw;
+    }
+}
+
+.caption {
+    background: white;
+    padding: .5rem 1rem;
+    border: double black;
+    text-align: center;
+}

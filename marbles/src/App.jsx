@@ -4,6 +4,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 //___Components___//
 import Navbar from './components/Navbar/Navbar';
 import SignForm from './components/Signin/SignForm';
+import Landing from './components/Landing/Landing';
 //___Collectible Components___//
 import CollectibleList from './components/CollectibleList/CollectibleList';
 import CollectibleForm from './components/CollectibleForm/CollectibleForm';
@@ -113,7 +114,7 @@ const App = () => {
       <AuthedUserContext.Provider value={user}>
         <Navbar handleSignout={handleSignout} />
         <Routes>
-          <Route path="/" element={<>Hello</>} />
+          <Route path="/" element={<Landing />} />
           {/* <Route path="/workshop" element={< Workshop />} /> */}
           <Route path='/profiles/:profileId/collectibles' element={<CollectibleList collectibles={[]} setCollectibles={setCollectibles} />} />
           {user ?
@@ -126,13 +127,12 @@ const App = () => {
 
               <Route path='/profiles' element={<ProfileList profiles={profiles} />} />
               <Route path='/profiles/create' element={< ProfileForm handleCreateProfile={handleCreateProfile} setUser={setUser} collectibles={collectibles} />} />
-              <Route path='/profiles/:profileId' element={< ProfileDetails handleDeleteProfile={handleDeleteProfile} />} />
+              <Route path='/profiles/:profileId' element={< ProfileDetails handleDeleteProfile={handleDeleteProfile}  collectibles={collectibles} />} />
               <Route path='/profiles/:profileId/edit' element={< ProfileForm handleUpdateProfile={handleUpdateProfile} collectibles={collectibles} />} />
             </>
             :
             <>
               <Route path='/profiles' element={<ProfileList profiles={profiles} />} />
-              <Route path='/profiles/:profileId' element={< ProfileDetails />} />
               <Route path="/signup" element={<SignForm setUser={setUser} navigate={navigate} formType='signup' />} />
               <Route path="/signin" element={<SignForm setUser={setUser} navigate={navigate} formType='signin' />} />
             </>
