@@ -1,5 +1,5 @@
-# Marbles  
-![alt text](image)  
+# marbles  
+![marbles logo](./src/assets/images/marble1.svg)  
 
 ## Getting Started  
 [marbles](netlify url)  
@@ -31,7 +31,9 @@ A webapp for keeping track of your marbles, or whatever you might collect.
 
 #### Code References  
 [Using variables across .scss files](https://stackoverflow.com/a/17599322/25952288)  
+[Netlify - React vite.js page shows empty page on deploy](https://answers.netlify.com/t/react-vite-js-page-shows-empty-page-on-deploy/74210)  
 
+___  
 #### Media Resource Links  
 [The Simpsons - "I just think they're neat!" Video](https://www.youtube.com/watch?v=Y0PKG5-t3zU) [Image](https://i.redd.it/pbdg4l7i1a381.png)  
 [Pokemon - Shiny Charizard Card](https://www.dicebreaker.com/games/pokemon-trading-card-game/news/shiny-charizard-pokemon-card-auction-record)  
