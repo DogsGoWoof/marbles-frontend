@@ -26,14 +26,14 @@ const ProfileDetails = (props) => {
         fetchProfile();
     }, [profileId]);
 
-    
+
     if (!profile) return <>loading</>
 
     return (
         <>
             {profile ?
                 profile.is_private && (!user || profile.user_id !== user.id) ?
-                    <h1>Private Collection</h1>
+                    <h1>Private Collector</h1>
                     :
                     <main className="profile-details">
                         <div className="profile-column column-1">

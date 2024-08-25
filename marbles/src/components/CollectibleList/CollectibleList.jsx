@@ -50,17 +50,14 @@ const CollectibleList = ({ collectibles }) => {
     const starRating = (rating) => {
         let stars = rating <= 5 ? `☆☆☆☆☆` : ``;
         const blackStar = /☆/
-        if (rating <= 5) {
-            for (let i = 0; i < rating; i++) stars = stars.replace(blackStar, '★');
+        if (Math.abs(rating) <= 5) {
+            for (let i = 0; i < Math.abs(rating); i++) stars = stars.replace(blackStar, '★');
         }
-        else if (rating >= 6) {
-            stars = `★ x ${rating}`
+        else if (Math.abs(rating) >= 6) {
+            stars = `★ x ${Math.abs(rating)}`
         }
         return stars ? stars : '☆☆☆☆☆';
     };
-    // Add logic styling for negative rating
-    // probably poop emoji
-
 
     const [...fopphi] = document.getElementsByClassName('ioiho');
     fopphi.map(image => {
@@ -119,7 +116,11 @@ const CollectibleList = ({ collectibles }) => {
                             <article className="list-item">
                                 <div className="collectible-list-details">
                                     <h2><ruby>{collectible.name}<rp>(</rp><rt className="collectible-list-condition">{collectible.condition}</rt><rp>)</rp></ruby></h2>
-                                    <h4 className="star-rating">{starRating(collectible.rating)}</h4>
+                                    {collectible.rating >= 0 ?
+                                        <h4 className="star-rating">{starRating(collectible.rating)}</h4>
+                                        : 
+                                        <h4 className="star-rating negative-rating">{starRating(collectible.rating)}</h4>
+                                        }
                                     <p className="collectible-count">x{collectible.count}</p>
                                 </div>
                                 {collectible.image ?
