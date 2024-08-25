@@ -23,9 +23,6 @@ const ProfileList = ({ profiles }) => {
         }
     }
 
-    orderList(formData.detail, formData.order);
-
-
     const handleChange = (evt) => {
         const name = evt.target.name;
         const value = evt.target.value;
@@ -43,6 +40,7 @@ const ProfileList = ({ profiles }) => {
         user ? head.removeChild(styleElNode) : '';
     }
 
+    orderList(formData.detail, formData.order);
     checkUser();
 
 
@@ -57,6 +55,7 @@ const ProfileList = ({ profiles }) => {
                         value={formData.detail}
                         onChange={handleChange}
                     >
+                        <option value="id" hidden></option>
                         <option value="name">Name</option>
                         <option value="collection">Collection</option>
                     </select>

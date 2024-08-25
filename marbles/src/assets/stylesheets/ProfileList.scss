@@ -3,8 +3,9 @@
 .profile-list {
     display: flex;
     flex-flow: row wrap;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
+    text-align: center;
     gap: 0 2.5dvw;
     height: 70dvh;
     overflow: scroll;
@@ -28,7 +29,6 @@
     border: .2rem ridge yellow;
     border-radius: 50%;
     aspect-ratio: 1;
-    transition: all 1s linear;
     width: 6rem;
 }
 
@@ -47,13 +47,11 @@
     &:hover {
         box-shadow: 0 0 1rem white;
         border: .3rem solid yellow;
-        color: gold;
+        color: blue;
         
         .profile-list-image {
-            transition: all 1s linear;
-            rotate: 360deg;
-            scale: .1;
-            border-color: red;
+            scale: 1.1;
+            border-color: silver;
         }
     }
 }

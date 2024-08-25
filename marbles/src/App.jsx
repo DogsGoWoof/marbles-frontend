@@ -14,9 +14,6 @@ import ProfileList from './components/ProfileList/ProfileList';
 import ProfileForm from './components/ProfileForm/ProfileForm';
 import ProfileDetails from './components/ProfileDetails/ProfileDetails';
 
-// import Workshop from '../Workshop';
-
-
 //___Services___//
 import * as authService from '../src/services/authService';
 import * as collectibleService from './services/collectibleService';
@@ -53,7 +50,6 @@ const App = () => {
       const profilesData = await profileService.index();
       setProfiles(profilesData);
     };
-    // if (user) fetchAllProfiles();
     fetchAllProfiles();
   }, [user]);
 
@@ -116,7 +112,6 @@ const App = () => {
         <Navbar handleSignout={handleSignout} />
         <Routes>
           <Route path="/" element={<Landing />} />
-          {/* <Route path="/workshop" element={< Workshop />} /> */}
           <Route path='/profiles/:profileId/collectibles' element={<CollectibleList collectibles={[]} setCollectibles={setCollectibles} />} />
           {user ?
             <>

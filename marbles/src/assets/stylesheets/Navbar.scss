@@ -6,6 +6,10 @@ nav {
     margin: 1rem;
     background: #ddda;
     font-size: 3dvw;
+
+    @media (min-width: 1200px) {
+        font-size: 2.5dvw;
+    }
 }
 
 ul {

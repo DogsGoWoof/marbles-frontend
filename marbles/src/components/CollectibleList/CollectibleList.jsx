@@ -45,8 +45,6 @@ const CollectibleList = ({ collectibles }) => {
         }
     }
 
-    orderList(formData.detail, formData.order);
-
     const starRating = (rating) => {
         let stars = rating <= 5 ? `☆☆☆☆☆` : ``;
         const blackStar = /☆/
@@ -77,7 +75,8 @@ const CollectibleList = ({ collectibles }) => {
         user ? head.removeChild(styleElNode) : '';
     }
 
-    checkUser();
+    orderList(formData.detail, formData.order);
+    checkUser(); // Needs a check for when redirected from login else the page needs to be reloaded
 
 
     return (
