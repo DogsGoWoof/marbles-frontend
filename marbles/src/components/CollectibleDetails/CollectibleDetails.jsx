@@ -14,10 +14,10 @@ const CollectibleDetails = (props) => {
     const user = useContext(AuthedUserContext);
 
     const { collectibleId } = useParams();
+    
     useEffect(() => {
         const fetchCollectible = async () => {
             const [collectibleData] = await collectibleService.show(collectibleId);
-            // needed to destructure returned list from Flask backend
             setCollectible(collectibleData);
         };
         fetchCollectible();
