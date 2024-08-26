@@ -62,6 +62,7 @@ const ProfileForm = (props) => {
                         id="image-input"
                         value={formData.image}
                         onChange={handleChange}
+                        placeholder="http://picture.jpeg"
                     />
                     <label htmlFor="collection-input">Collection</label>
                     <input
@@ -86,7 +87,7 @@ const ProfileForm = (props) => {
                         value={formData.favourite}
                         onChange={handleChange}
                     >
-                        <option value="0" hidden></option>
+                        <option value={0}></option>
                         {props.collectibles.map(collectible => <option key={collectible.id} value={collectible.id}>{collectible.name}</option>)}
                     </select>
                     <label htmlFor="is_private-input">Privacy Setting</label>

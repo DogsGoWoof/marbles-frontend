@@ -23,7 +23,7 @@ const Landing = () => {
 
 
     return (
-        <>
+        <main className="landing-main">
             <section className="landing-head landing">
                 <h1 className="landing-title">Welcome to marbles!</h1>
                 {user ?
@@ -38,7 +38,7 @@ const Landing = () => {
                     <figcaption className="caption">Caw Collect</figcaption>
                 </figure>
             </section>
-        </>
+        </main>
     )
 };
 

@@ -24,10 +24,15 @@
 }
 
 .collectible {
-    @include listFlex() 
+    @include listFlex();
+
+    a:focus {
+        box-shadow: inset 0 0 1rem gold;
+        outline: .2rem solid silver;
+    }
 }
 
-.collectible > * {
+.collectible>* {
     margin: 1rem;
     border: 2px solid brown;
     aspect-ratio: .7;
@@ -40,6 +45,8 @@
         outline: .2rem solid silver;
     }
 }
+
+
 
 .star-rating {
     color: yellow;
@@ -70,7 +77,8 @@
     padding: 2dvh 1dvw 1dvh 1dvw;
 }
 
-.placeholder-image, .collectible-list-image {
+.placeholder-image,
+.collectible-list-image {
     width: 100%;
     position: relative;
     border: .5rem ridge saddlebrown;

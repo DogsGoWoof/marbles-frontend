@@ -30,6 +30,7 @@ const CollectibleList = ({ collectibles }) => {
         fetchCollectorCollectibles();
     }, []);
 
+
     const handleChange = (evt) => {
         const name = evt.target.name;
         const value = evt.target.value;
@@ -75,6 +76,9 @@ const CollectibleList = ({ collectibles }) => {
         user ? head.removeChild(styleElNode) : '';
     }
 
+    if (collectiblesList[0]?.is_private && profileId && user.profile_id !== parseInt(profileId)) {
+        return <h1>Private Collection</h1>
+    };
     orderList(formData.detail, formData.order);
     checkUser(); // Needs a check for when redirected from login else the page needs to be reloaded
 
@@ -117,9 +121,9 @@ const CollectibleList = ({ collectibles }) => {
                                     <h2><ruby>{collectible.name}<rp>(</rp><rt className="collectible-list-condition">{collectible.condition}</rt><rp>)</rp></ruby></h2>
                                     {collectible.rating >= 0 ?
                                         <h4 className="star-rating">{starRating(collectible.rating)}</h4>
-                                        : 
+                                        :
                                         <h4 className="star-rating negative-rating">{starRating(collectible.rating)}</h4>
-                                        }
+                                    }
                                     <p className="collectible-count">x{collectible.count}</p>
                                 </div>
                                 {collectible.image ?

@@ -34,6 +34,7 @@ A webapp for keeping track of your marbles, or whatever you might collect.
 [Using variables across .scss files](https://stackoverflow.com/a/17599322/25952288)  
 [Netlify - React vite.js page shows empty page on deploy](https://answers.netlify.com/t/react-vite-js-page-shows-empty-page-on-deploy/74210)  
 [Netlify - React app launches with blank page](https://answers.netlify.com/t/react-app-launches-with-blank-page/50059/2)
+[Stack Overflow - How to force image resize and keep aspect ratio?](https://stackoverflow.com/a/39039206/25952288)
 
 ___  
 #### Media Resource Links  

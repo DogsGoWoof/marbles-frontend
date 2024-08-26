@@ -1,5 +1,10 @@
 @import 'Variables';
 
+.landing-main {
+    display: flex;
+    flex-flow: column;
+}
+
 .landing {
     margin: 1rem;
 }
@@ -8,7 +13,6 @@
     text-align: center;
     background: #fffa;
     border: .5rem groove black;
-    // border-radius: .5rem;
     @include circleBG();
 }
 

@@ -3,9 +3,7 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    // font-family: $f-roboto-mono;
-    font-family: $f-lilita-one;
-    // font-family: $f-merryweather;
+    font-family: $f-lilita-one, $f-merryweather, sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen;
     font-weight: 100;
 }
 
