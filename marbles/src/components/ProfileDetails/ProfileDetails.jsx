@@ -6,6 +6,7 @@ import * as profileService from '../../services/profileService';
 import * as collectibleService from '../../services/collectibleService';
 
 import '../../assets/stylesheets/ProfileDetails.scss';
+import imagenotfound from '../../assets/images/imagenotfound.png';
 
 const ProfileDetails = (props) => {
 
@@ -68,11 +69,11 @@ const ProfileDetails = (props) => {
                             {profile.favourite ?
                                 <div className="profile-favourite">
                                     <h2>{favourite?.condition} condition {favourite?.name}</h2>
-                                    <img className="profile-favourite-image" src={favourite?.image} alt={`${profile.name}'s favourite piece of their ${profile.collection} collection.`} />
+                                    <img className="profile-favourite-image" src={favourite?.image ? favourite.image : imagenotfound} alt={`${profile.name}'s favourite piece of their ${profile.collection} collection.`} />
                                 </div>
                                 :
                                 <div className="profile-favourite">
-                                    <img className="profile-favourite-image" src='https://assetsio.gnwcdn.com/pokemon-card-shiny-charizard.jpeg?width=848&quality=80&format=jpg&dpr=2&auto=webp' alt={`Placeholder for favourite collection piece.`} />
+                                    <img className="profile-favourite-image" src='https://assetsio.gnwcdn.com/pokemon-card-shiny-charizard.jpeg?width=848&quality=80&format=jpg&dpr=2&auto=webp' alt={`Placeholder for favourite collection piece of a shiny Charizard Pokemon card.`} />
                                 </div>
                             }
                         </div>

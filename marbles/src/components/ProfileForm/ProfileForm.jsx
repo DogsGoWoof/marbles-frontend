@@ -42,7 +42,7 @@ const ProfileForm = (props) => {
 
 
     return (
-        <main>
+        <main className="profile-form-main">
             <form onSubmit={handleSubmit}>
                 <fieldset className="form profile-form" >
                     <legend><h1>{profileId ? 'Edit Profile' : 'Create Profile'}</h1></legend>

@@ -35,6 +35,7 @@ A webapp for keeping track of your marbles, or whatever you might collect.
 [Netlify - React vite.js page shows empty page on deploy](https://answers.netlify.com/t/react-vite-js-page-shows-empty-page-on-deploy/74210)  
 [Netlify - React app launches with blank page](https://answers.netlify.com/t/react-app-launches-with-blank-page/50059/2)
 [Stack Overflow - How to force image resize and keep aspect ratio?](https://stackoverflow.com/a/39039206/25952288)
+[Stack Overflow - How to customize an end time for a YouTube video?](https://stackoverflow.com/a/11422551/25952288)
 
 ___  
 #### Media Resource Links  
@@ -43,14 +44,13 @@ ___
 [Toy Story - Woody Silhouette](https://www.inspireuplift.com/Toy-Story-Silhouette-Svg-Toy-Story-Logo-Disney-Silhouette-/iu/2081547)  
 Fairly Odd Parents - If I had one! [Image 1](https://x.com/realhartman/status/876449278784282626) [Image 2](https://vlipsy.com/vlip/fairly-odd-parents-if-i-had-one-dOMWLeiw)  
 [Star Wars - This will make a fine additon to my collection](https://imgflip.com/memetemplate/201271129/This-will-make-a-fine-addition-to-my-collection)  
-[30 Rock - Jack Donaghy Cookie Jar Collection](https://138daysof30rock.wordpress.com/wp-content/uploads/2014/07/screenshot-2014-07-17-19-08-06.png)  
+[30 Rock - Jack Donaghy Cookie Jar Collection](https://www.youtube.com/watch?v=PnZb1G7-rjE)  
 [Crow Image](https://listverse.com/2019/02/08/top-10-unusual-things-crows-can-do/)
 [Pack Rat Image](http://s437713483.onlinehome.us/the-original-pack-rat)
 
 ### Next Steps  
 - Add search by entered text functionality  
-- Add friend functionality between users/profiles 
-[IASIP - I can even add you to my collection](https://getyarn.io/yarn-clip/894ba0ed-eb81-4ae3-ba1f-17029cfe1539/gif)  
-- 
+- Add friend functionality between users/profiles  
+- Add website style user customization  (attached to profile)  
 
-#### [Github Repo](https://github.com/DogsGoWoof/marbles-frontend)
+#### [Github Repo](https://github.com/DogsGoWoof/marbles-frontend/tree/main/marbles)

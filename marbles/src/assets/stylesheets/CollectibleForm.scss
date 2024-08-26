@@ -1,3 +1,5 @@
+@import 'Variables';
+
 .collectible-form-container {
     display: flex;
     flex-flow: column;
@@ -17,8 +19,6 @@ fieldset.form {
 }
 
 .hello-there {
-    width: 50%;
-    border: .2rem solid white;
-    outline: 1rem solid black;
-    margin-bottom: 3rem;
+    @include memeOutline();
+    margin: 1rem 0 3rem 0;
 }

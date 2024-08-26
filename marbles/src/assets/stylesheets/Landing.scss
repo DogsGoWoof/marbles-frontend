@@ -26,12 +26,7 @@
 }
 
 .caw-collect {
-    width: 60dvw;
-    border: .4rem solid black;
-
-    @media (min-width: 1200px) {
-        width: 40dvw;
-    }
+    @include memeOutline();
 }
 
 .caption {
@@ -39,4 +34,10 @@
     padding: .5rem 1rem;
     border: double black;
     text-align: center;
+    margin-top: 2rem;
+}
+
+.landing-meme {
+    @include memeOutline();
+    max-height: 50dvh;
 }

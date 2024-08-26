@@ -31,7 +31,6 @@
 
         .profile-favourite {
             display: flex;
-            padding: 1dvh 1dvw 2dvh 1dvw;
         }
 
         .column-2 > .collection-link {
@@ -64,8 +63,11 @@
     }
 
     .profile-image {
+        background: $box-background;
         aspect-ratio: 1;
         align-self: center;
+        border: .1rem solid skyblue;
+        border-radius: .5rem;
     }
 
     .profile-edit-btn {
@@ -105,6 +107,7 @@
         border: .1rem solid skyblue;
         margin-bottom: 1dvh;
         width: 100%;
+        padding: 1dvh 1dvw 2dvh 1dvw;
 
         &:hover {
             box-shadow: 0 0 1rem gold;
@@ -164,8 +167,9 @@
         width: 100%;
         height: fit-content;
         min-height: 30%;
-        background: #f5f5f588;
-        border: .3rem groove black;
+        background: $box-background;
+        border: .1rem solid skyblue;
+        padding: .5rem;
         border-radius: .5rem;
     }
 }
