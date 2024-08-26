@@ -62,7 +62,6 @@ const ProfileForm = (props) => {
                         id="image-input"
                         value={formData.image}
                         onChange={handleChange}
-                        placeholder="http://picture.jpeg"
                     />
                     <label htmlFor="collection-input">Collection</label>
                     <input
