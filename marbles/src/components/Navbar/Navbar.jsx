@@ -23,11 +23,11 @@ const Navbar = ({ handleSignout }) => {
                 {user ?
                     <>
                         {user.profile_id ?
-                            <li>
+                            <li className="user-name-link">
                                 <Link to={`profiles/${user.profile_id}`}>{user.username}</Link>
                             </li>
                             :
-                            <li>
+                            <li className="user-name-link">
                                 <Link to={`profiles/create`}>{user.username}</Link>
                             </li>
                         }

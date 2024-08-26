@@ -2,7 +2,7 @@
 ![marbles logo](./src/assets/images/marble1.svg)  
 
 ## Getting Started  
-[marbles](netlify url)  
+[marbles](https://marblles.netlify.app/)  
 A webapp for keeping track of your marbles, or whatever you might collect.  
 
 ### Technologies Used  

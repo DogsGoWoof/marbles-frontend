@@ -33,7 +33,6 @@ const SignForm = ({ setUser, formType, navigate }) => {
             }
             else if (formType === 'signin') {
                 const user = await authService.signin(formData);
-                console.log(user);
                 setUser(user);
             }
             navigate('/collectibles');

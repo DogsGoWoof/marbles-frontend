@@ -47,7 +47,7 @@ const ProfileDetails = (props) => {
                             }
                             {user.id === profile.user_id ?
                                 <>
-                                    <div className="profile-actions actions profile-edit-btn">
+                                    <div className="profile-edit-btn">
                                         <Link to={`/profiles/${profileId}/edit`}>Edit Profile</Link>
                                     </div>
                                 </>

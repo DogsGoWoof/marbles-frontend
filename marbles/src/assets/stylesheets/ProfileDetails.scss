@@ -52,20 +52,23 @@
     .profile-image {
         aspect-ratio: 1;
         align-self: center;
-        grid-row: 2;
-        grid-column: 1;
     }
 
     .profile-edit-btn {
         scale: .8;
-        width: 50%;
         text-align: center;
-
+        font-size: 3dvh;
+        
         a {
             background: lightgray;
+            padding: .5rem 1rem;
+            border: .3rem solid yellow;
+            border-radius: .5rem;
+            outline: 1px solid black;
 
             &:hover {
                 color: black;
+                border-color: black;
             }
         }
     }
@@ -90,12 +93,15 @@
         &:hover {
             box-shadow: 0 0 1rem gold;
             filter: saturate(105%);
+            cursor: zoom-in;
         }
 
         .profile-favourite-image {
+            position: relative;
 
             &:active {
-                scale: 2;
+                position: fixed;
+                max-width: 50dvw;
             }
         }
     }
@@ -130,6 +136,7 @@
     .about {
         width: 100%;
         height: fit-content;
+        min-height: 30%;
         background: #f5f5f588;
         border: .3rem groove black;
         border-radius: .5rem;

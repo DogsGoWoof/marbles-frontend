@@ -51,15 +51,19 @@
 .actions {
     width: 200%;
 
+    * {
+        scale: .9;
+    }
+
     a {
         font-size: 3dvh;
-        padding: 1.6rem;
-        margin: .5rem;
+        margin: .5rem 1.2rem;
         border: .3rem solid black;
         border-radius: 50%;
         aspect-ratio: 1;
         background: silver;
         color: black;
+        width: 80px;
     }
 
     .edit {
