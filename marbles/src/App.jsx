@@ -64,17 +64,13 @@ const App = () => {
   //___Collectible Handlers___///
   const handleCreateCollectible = async (collectibleFormData) => {
     const newCollectible = await collectibleService.create(collectibleFormData);
-    console.log(newCollectible);
     setCollectibles([newCollectible, ...collectibles]);
     navigate('/collectibles');
   };
 
   const handleUpdateCollectible = async (collectibleId, collectibleFormData) => {
     const updatedCollectible = await collectibleService.update(collectibleId, collectibleFormData);
-    console.log(updatedCollectible);
-
     setCollectibles(collectibles.map((collectible) => (parseInt(collectibleId) === collectible.id ? updatedCollectible : collectible)));
-
     navigate(`/collectibles/${collectibleId}`);
   };
 
