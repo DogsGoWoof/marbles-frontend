@@ -103,7 +103,7 @@ const App = () => {
     else if (order = 'desc') {
       arr.sort((a, b) => a[detail] < b[detail]);
     }
-  }
+  };
 
   return (
     <>
@@ -122,7 +122,7 @@ const App = () => {
 
               <Route path='/profiles' element={<ProfileList profiles={profiles} orderList={orderList} />} />
               <Route path='/profiles/create' element={< ProfileForm handleCreateProfile={handleCreateProfile} setUser={setUser} collectibles={collectibles} />} />
-              <Route path='/profiles/:profileId' element={< ProfileDetails collectibles={collectibles} />} />
+              <Route path='/profiles/:profileId' element={< ProfileDetails />} />
               <Route path='/profiles/:profileId/edit' element={< ProfileForm handleUpdateProfile={handleUpdateProfile} collectibles={collectibles} />} />
             </>
             :
@@ -136,6 +136,6 @@ const App = () => {
       </AuthedUserContext.Provider>
     </>
   )
-}
+};
 
 export default App;

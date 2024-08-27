@@ -1,43 +1,5 @@
 @import 'Variables';
 
-form {
-    margin-top: 10dvh;
-    border: .5rem groove #ffff00;
-    border-top: none;
-    border-bottom: none;
-    border-radius: 100%;
-    aspect-ratio: 1;
-    background: #ffffff55;
-    height: 50dvh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 3dvh;
-}
-
-fieldset {
-    background: #ffffffbe;
-    display: flex;
-    flex-flow: column;
-    gap: 1rem;
-    align-items: flex-end;
-    border-radius: .5rem;
-    justify-content: center;
-    align-items: center;
-    // height: 100%;
-    width: 100%;
-
-    div {
-        display: flex;
-        flex-flow: column;
-        gap: .5rem;
-    }
-
-    div > label {
-        align-self: flex-start;
-    }
-}
-
 .login {
     grid-column: 3;
 }
@@ -92,4 +54,46 @@ button {
 
 .link-wrapper {
     align-self: flex-end;
+}
+
+.input-container {
+
+    ul {
+        display: flex;
+        flex-flow: column;
+        font-size: 1.8dvh;
+        text-align: center;
+        color: transparent;
+
+        li {
+            display: none;
+        }
+    }
+}
+
+.instructions {
+
+    &:valid {
+        background: lightgreen;
+    }
+
+    &:invalid {
+        background: lightcoral;
+    }
+
+    & + ul {
+        color: black;
+
+        li {
+            display: inline;
+
+            .password-restrictions {
+                color: black;
+
+                li {
+                    color: blue;
+                }
+            }
+        }
+    }
 }

@@ -63,6 +63,7 @@ const CollectibleForm = (props) => {
                         id="image-input"
                         value={formData.image}
                         onChange={handleChange}
+                        placeholder="Image URL"
                     />
                     <label htmlFor="rating-input">Rating</label>
                     <input

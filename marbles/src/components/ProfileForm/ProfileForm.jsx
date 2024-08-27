@@ -6,7 +6,7 @@ import * as profileService from '../../services/profileService';
 import '../../assets/stylesheets/ProfileForm.scss';
 
 
-const ProfileForm = ({ collectibles }, props) => {
+const ProfileForm = ({ collectibles, ...props }) => {
 
     const [formData, setFormData] = useState({
         name: '',
@@ -62,6 +62,7 @@ const ProfileForm = ({ collectibles }, props) => {
                         id="image-input"
                         value={formData.image}
                         onChange={handleChange}
+                        placeholder="Image URL"
                     />
                     <label htmlFor="collection-input">Collection</label>
                     <input

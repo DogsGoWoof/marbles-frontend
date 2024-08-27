@@ -14,7 +14,7 @@ const CollectibleDetails = (props) => {
     const user = useContext(AuthedUserContext);
 
     const { collectibleId } = useParams();
-    
+
     useEffect(() => {
         const fetchCollectible = async () => {
             const [collectibleData] = await collectibleService.show(collectibleId);
@@ -23,13 +23,25 @@ const CollectibleDetails = (props) => {
         fetchCollectible();
     }, [collectibleId]);
 
+    const [collectibleNameEl] = document.getElementsByClassName('collectible-name');
+    const nameFormat = (name) => {
+        if (name.length <= 15 || name.includes(' ')) return name;
+        else {
+            if (collectibleNameEl) {
+                    // add media query for screen size 
+                collectibleNameEl.innerHTML = `${name.slice(0, name.length / 2)}-<br />${name.slice(name.length / 2)}`;
+                collectibleNameEl.style.fontSize = '2.5dvh';
+            }
+        }
+    };
+
 
     return (
         <>
             {collectible ?
                 <main className="collectible-details">
                     <div className="collectible-name-image column">
-                        <h1 className="collectible-name">{collectible.name}</h1>
+                        <h1 className="collectible-name">{nameFormat(collectible.name)}</h1>
                         {collectible.image ?
                             <img className="collectible-image" src={collectible.image} alt={`User provided image of ${collectible.name}.`} />
                             :

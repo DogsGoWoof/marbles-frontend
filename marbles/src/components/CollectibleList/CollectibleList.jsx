@@ -21,7 +21,7 @@ const CollectibleList = ({ collectibles, orderList }) => {
 
     const user = useContext(AuthedUserContext);
 
-    const { profileId } = useParams() ? useParams() : user.profile_id;
+    const { profileId } = useParams() ? useParams() : user.profile_id ? user.profile_id : null;
     // change back end to return profile.favourite value to add marker to the item in the list
     useEffect(() => {
         const fetchCollectorCollectibles = async () => {
@@ -29,14 +29,17 @@ const CollectibleList = ({ collectibles, orderList }) => {
             setCollectiblesList(collectiblesData);
         };
         fetchCollectorCollectibles();
-    }, []);
+    }, [profileId]);
+
+    const reFetchCollectibles = async () => {
+        const collectiblesData = await collectibleService.index(profileId);
+        setCollectiblesList(collectiblesData);
+    };
 
     const searchFunc = (arr) => {
-        const filteredList = arr.filter(item => {
-            return item.name.includes(search)
-        });
-        setCollectiblesList(filteredList);
-    }
+        const filteredList = arr.filter(item => item.name.includes(search));
+        setCollectiblesList(filteredList)
+    };
 
     const handleChange = (evt) => {
         const inputType = evt.target.localName;
@@ -47,7 +50,9 @@ const CollectibleList = ({ collectibles, orderList }) => {
         }
         if (inputType === 'input') {
             setSearch(value);
-            if (!value) setCollectiblesList(collectibles);
+            if (!value) {
+                profileId ? user.profile_id === profileId ? setCollectiblesList(collectibles) : reFetchCollectibles() : setCollectiblesList(collectibles);
+            };
         }
     };
 
@@ -79,7 +84,14 @@ const CollectibleList = ({ collectibles, orderList }) => {
     const searchEl = document.getElementById('search');
     if (searchEl) {
         searchEl.addEventListener("keypress", (evt) => {
-            if (evt.key === 'Enter') searchFunc(collectiblesList);
+            if (evt.key === 'Enter') {
+                searchFunc(collectiblesList);
+                searchEl.disabled = true;
+                setTimeout(() => {
+                    searchEl.disabled = false
+                    searchEl.focus();
+                }, 150);
+            };
         })
     }
 
@@ -94,7 +106,13 @@ const CollectibleList = ({ collectibles, orderList }) => {
         <>
             <main className="list-container">
                 <div className="sort-selects">
-                    <input type="search" name="search" id="search" value={search} onChange={handleChange} />
+                    <input type="search"
+                        name="search"
+                        id="search"
+                        value={search}
+                        onChange={handleChange}
+                        placeholder="Search by name"
+                    />
                     <select
                         required
                         name="detail"

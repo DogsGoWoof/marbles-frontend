@@ -18,8 +18,6 @@ const Landing = () => {
         'Beanie Babies!',
         'Sent to collections, but in a good way',
     ];
-    
-// 
 
     const collectionOfCollectionMemes = [    
         <img 

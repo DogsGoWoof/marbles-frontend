@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthedUserContext } from '../../App';
 
@@ -18,7 +18,6 @@ const ProfileList = ({ profiles, orderList }) => {
         const name = evt.target.name;
         const value = evt.target.value;
         setFormData({ ...formData, [name]: value });
-        orderList(formData.detail, formData.order);
     };
 
     orderList(formData.detail, formData.order, profiles);

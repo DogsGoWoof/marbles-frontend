@@ -8,7 +8,7 @@ import * as collectibleService from '../../services/collectibleService';
 import '../../assets/stylesheets/ProfileDetails.scss';
 import imagenotfound from '../../assets/images/imagenotfound.png';
 
-const ProfileDetails = ({ collectibles }) => {
+const ProfileDetails = () => {
 
     const [profile, setProfile] = useState(null);
     const [favourite, setFavourite] = useState(null);
@@ -23,6 +23,7 @@ const ProfileDetails = ({ collectibles }) => {
             setProfile(profileData);
             const [foundFavourite] = await collectibleService.show(profileData.favourite);
             setFavourite(foundFavourite);
+            // add profile.user_id fetch of collectibles to display stats
         };
         fetchProfile();
     }, [profileId]);

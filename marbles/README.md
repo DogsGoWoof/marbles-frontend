@@ -37,6 +37,10 @@ A webapp for keeping track of your marbles, or whatever you might collect.
 [Stack Overflow - How to force image resize and keep aspect ratio?](https://stackoverflow.com/a/39039206/25952288)
 [Stack Overflow - How to customize an end time for a YouTube video?](https://stackoverflow.com/a/11422551/25952288)
 [Stack Overflow - react-router: How to disable a <Link>, if its active?](https://stackoverflow.com/questions/35963070/react-router-how-to-disable-a-link-if-its-active)
+[freeCodeCamp - Learn Regular Expressions (Regex) - Crash Course for Beginners](https://www.youtube.com/watch?v=ZfQFUJhPqMM)  
+[RegEx](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions) [2](https://www.youtube.com/watch?v=ZfQFUJhPqMM) [3](https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a) [4](https://www.youtube.com/watch?v=VVx8DDgAlFI) 
+[HTML pattern attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern)  
+[How can I set focus on an element in an HTML form using JavaScript?](https://stackoverflow.com/q/17500704/25952288)  
 
 ___  
 #### Media Resource Links  
