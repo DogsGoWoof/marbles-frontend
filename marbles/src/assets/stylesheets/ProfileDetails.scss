@@ -64,7 +64,9 @@
 
     .profile-image {
         background: $box-background;
+        padding: .5rem 0;
         aspect-ratio: 1;
+        object-fit: contain;
         align-self: center;
         border: .1rem solid skyblue;
         border-radius: .5rem;
