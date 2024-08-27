@@ -6,14 +6,14 @@ import * as profileService from '../../services/profileService';
 import '../../assets/stylesheets/ProfileForm.scss';
 
 
-const ProfileForm = (props) => {
+const ProfileForm = ({ collectibles }, props) => {
 
     const [formData, setFormData] = useState({
         name: '',
         image: '',
         collection: '',
         about: '',
-        favourite: props.collectibles[0]?.id ? props.collectibles[0].id : 0,
+        favourite: collectibles.length ? collectibles[0]?.id ? collectibles[0].id : 0 : 0,
         is_private: true,
     });
 
@@ -87,7 +87,7 @@ const ProfileForm = (props) => {
                         onChange={handleChange}
                     >
                         <option value={0}></option>
-                        {props.collectibles.map(collectible => <option key={collectible.id} value={collectible.id}>{collectible.name}</option>)}
+                        {collectibles.map(collectible => <option key={collectible.id} value={collectible.id}>{collectible.name}</option>)}
                     </select>
                     <label htmlFor="is_private-input">Privacy Setting</label>
                     <select

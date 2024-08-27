@@ -8,7 +8,7 @@ import * as collectibleService from '../../services/collectibleService';
 import '../../assets/stylesheets/ProfileDetails.scss';
 import imagenotfound from '../../assets/images/imagenotfound.png';
 
-const ProfileDetails = (props) => {
+const ProfileDetails = ({ collectibles }) => {
 
     const [profile, setProfile] = useState(null);
     const [favourite, setFavourite] = useState(null);

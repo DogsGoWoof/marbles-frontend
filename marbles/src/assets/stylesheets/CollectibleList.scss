@@ -25,14 +25,23 @@
 
 .collectible {
     @include listFlex();
-    
+
+
     a {
         border-radius: .5rem;
     }
 
-    a:focus {
+    &.enabled > a:focus {
         box-shadow: inset 0 0 1rem gold;
         outline: .2rem solid silver;
+    }
+
+    &.disabled {
+        pointer-events: none;
+        * {
+            color: gray;
+            filter: none;
+        }
     }
 }
 
@@ -49,8 +58,6 @@
         outline: .2rem solid silver;
     }
 }
-
-
 
 .star-rating {
     color: yellow;
@@ -77,7 +84,7 @@
     display: flex;
     flex-flow: column-reverse;
     justify-content: space-between;
-    height: 100%;
+    height: fit-content;
     padding: 2dvh 1dvw 1dvh 1dvw;
 }
 
@@ -96,4 +103,32 @@
 .collectible-list-condition {
     font-style: italic;
     color: $mint;
+}
+
+.collectible-name-container {
+    width: 100%;
+    text-align: center;
+}
+
+.collection-stats {
+    background: whitesmoke;
+    padding: 1rem;
+    border-radius: .5rem;
+    border: .3rem ridge;
+    width: 50%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
+    .stat-name {
+        border-bottom: 1px solid black;
+        width: 100%;
+    }
+
+    .stat-number {
+        color: gold;
+        float: right;
+        filter: drop-shadow(0 0 1px black);
+    }
 }

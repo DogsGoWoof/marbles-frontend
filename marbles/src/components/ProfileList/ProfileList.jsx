@@ -5,7 +5,7 @@ import { AuthedUserContext } from '../../App';
 import '../../assets/stylesheets/ProfileList.scss';
 import ga from '../../assets/images/ga.svg';
 
-const ProfileList = ({ profiles }) => {
+const ProfileList = ({ profiles, orderList }) => {
 
     const [formData, setFormData] = useState({
         detail: 'id',
@@ -14,15 +14,6 @@ const ProfileList = ({ profiles }) => {
 
     const user = useContext(AuthedUserContext);
 
-    const orderList = (detail, order = 'asc') => {
-        if (order === 'asc') {
-            profiles.sort((a, b) => a[detail] > b[detail]);
-        }
-        else if (order = 'desc') {
-            profiles.sort((a, b) => a[detail] < b[detail]);
-        }
-    }
-
     const handleChange = (evt) => {
         const name = evt.target.name;
         const value = evt.target.value;
@@ -30,18 +21,7 @@ const ProfileList = ({ profiles }) => {
         orderList(formData.detail, formData.order);
     };
 
-    const checkUser = () => {
-        const head = document.querySelector('head');
-        const styleEl = document.createElement('style');
-        styleEl.id = 'a-disable';
-        styleEl.innerText = '.list > a { pointer-events: none; color: gray; }';
-        head.appendChild(styleEl);
-        const styleElNode = document.getElementById('a-disable');
-        user ? head.removeChild(styleElNode) : '';
-    }
-
-    orderList(formData.detail, formData.order);
-    checkUser();
+    orderList(formData.detail, formData.order, profiles);
 
 
     return (
@@ -71,9 +51,9 @@ const ProfileList = ({ profiles }) => {
                         <option value="desc">Descending</option>
                     </select>
                 </div>
-                <div className="list profile-list">
+                <div className={`list profile-list ${user ? 'enabled' : 'disabled'}`}>
                     {profiles.map((profile) => (
-                        <Link key={profile.id} to={`/profiles/${profile.id}`}>
+                        <Link key={profile.id} to={user ? `/profiles/${profile.id}` : ''}>
                             <article>
                                 <div className="profile-card">
                                     {profile.image ?

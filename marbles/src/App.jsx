@@ -95,12 +95,15 @@ const App = () => {
     navigate(`/profiles/${profileId}`);
   };
 
-  const handleDeleteProfile = async (profileId) => {
-    const deletedProfile = await profileService.deleteProfile(profileId);
-    setProfiles(profiles.filter((profile) => profile.id !== deletedProfile.id));
-    navigate('/profiles');
-  };
-
+  //___Functions___//
+  const orderList = (detail = 'id', order = 'asc', arr) => {
+    if (order === 'asc') {
+      arr.sort((a, b) => a[detail] > b[detail]);
+    }
+    else if (order = 'desc') {
+      arr.sort((a, b) => a[detail] < b[detail]);
+    }
+  }
 
   return (
     <>
@@ -108,23 +111,23 @@ const App = () => {
         <Navbar handleSignout={handleSignout} />
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path='/profiles/:profileId/collectibles' element={<CollectibleList collectibles={[]} setCollectibles={setCollectibles} />} />
+          <Route path='/profiles/:profileId/collectibles' element={<CollectibleList collectibles={[]} setCollectibles={setCollectibles} orderList={orderList} />} />
           {user ?
             <>
               <Route path='/hello' element={<h1>World</h1>} />
-              <Route path='/collectibles' element={<CollectibleList collectibles={collectibles} />} />
+              <Route path='/collectibles' element={<CollectibleList collectibles={collectibles} orderList={orderList} />} />
               <Route path='/collectibles/create' element={<CollectibleForm handleCreateCollectible={handleCreateCollectible} />} />
               <Route path='/collectibles/:collectibleId' element={<CollectibleDetails handleDeleteCollectible={handleDeleteCollectible} />} />
               <Route path='/collectibles/:collectibleId/edit' element={<CollectibleForm handleUpdateCollectible={handleUpdateCollectible} />} />
 
-              <Route path='/profiles' element={<ProfileList profiles={profiles} />} />
+              <Route path='/profiles' element={<ProfileList profiles={profiles} orderList={orderList} />} />
               <Route path='/profiles/create' element={< ProfileForm handleCreateProfile={handleCreateProfile} setUser={setUser} collectibles={collectibles} />} />
-              <Route path='/profiles/:profileId' element={< ProfileDetails handleDeleteProfile={handleDeleteProfile}  collectibles={collectibles} />} />
+              <Route path='/profiles/:profileId' element={< ProfileDetails collectibles={collectibles} />} />
               <Route path='/profiles/:profileId/edit' element={< ProfileForm handleUpdateProfile={handleUpdateProfile} collectibles={collectibles} />} />
             </>
             :
             <>
-              <Route path='/profiles' element={<ProfileList profiles={profiles} />} />
+              <Route path='/profiles' element={<ProfileList profiles={profiles} orderList={orderList} />} />
               <Route path="/signup" element={<SignForm setUser={setUser} navigate={navigate} formType='signup' />} />
               <Route path="/signin" element={<SignForm setUser={setUser} navigate={navigate} formType='signin' />} />
             </>

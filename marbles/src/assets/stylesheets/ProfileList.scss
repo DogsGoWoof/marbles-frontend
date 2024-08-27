@@ -15,13 +15,21 @@
     padding: 1rem 0;
     width: 97%;
 
-    a:focus {
+    .enabled > a:focus {
 
         .profile-card {
             box-shadow: 0 0 1rem white;
             border: .3rem solid yellow;
             color: gold;
 
+        }
+    }
+
+    &.disabled {
+        pointer-events: none;
+
+        * {
+            color: gray;
         }
     }
 }

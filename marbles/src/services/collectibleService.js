@@ -46,7 +46,6 @@ const create = async (collectibleFormData) => {
 };
 
 const deleteCollectible = async (collectibleId) => {
-    // 'delete' is a JS keyword
     try {
         const res = await fetch(`${BASE_URL}/${collectibleId}`, {
             method: 'DELETE',

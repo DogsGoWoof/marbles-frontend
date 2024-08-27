@@ -36,6 +36,7 @@ A webapp for keeping track of your marbles, or whatever you might collect.
 [Netlify - React app launches with blank page](https://answers.netlify.com/t/react-app-launches-with-blank-page/50059/2)
 [Stack Overflow - How to force image resize and keep aspect ratio?](https://stackoverflow.com/a/39039206/25952288)
 [Stack Overflow - How to customize an end time for a YouTube video?](https://stackoverflow.com/a/11422551/25952288)
+[Stack Overflow - react-router: How to disable a <Link>, if its active?](https://stackoverflow.com/questions/35963070/react-router-how-to-disable-a-link-if-its-active)
 
 ___  
 #### Media Resource Links  

@@ -10,18 +10,19 @@ import fopiiho2 from '../../assets/images/fopiiho2.png';
 import alpha from '../../assets/images/alpha.png';
 
 
-const CollectibleList = ({ collectibles }) => {
+const CollectibleList = ({ collectibles, orderList }) => {
 
     const [collectiblesList, setCollectiblesList] = useState(collectibles);
     const [formData, setFormData] = useState({
         detail: 'id',
         order: 'asc',
     });
+    const [search, setSearch] = useState('');
 
     const user = useContext(AuthedUserContext);
 
     const { profileId } = useParams() ? useParams() : user.profile_id;
-
+    // change back end to return profile.favourite value to add marker to the item in the list
     useEffect(() => {
         const fetchCollectorCollectibles = async () => {
             const collectiblesData = await collectibleService.index(profileId);
@@ -30,20 +31,30 @@ const CollectibleList = ({ collectibles }) => {
         fetchCollectorCollectibles();
     }, []);
 
+    const searchFunc = (arr) => {
+        const filteredList = arr.filter(item => {
+            return item.name.includes(search)
+        });
+        setCollectiblesList(filteredList);
+    }
 
     const handleChange = (evt) => {
-        const name = evt.target.name;
+        const inputType = evt.target.localName;
         const value = evt.target.value;
-        setFormData({ ...formData, [name]: value });
+        if (inputType === 'select') {
+            const name = evt.target.name;
+            setFormData({ ...formData, [name]: value });
+        }
+        if (inputType === 'input') {
+            setSearch(value);
+            if (!value) setCollectiblesList(collectibles);
+        }
     };
 
-    const orderList = (detail = 'id', order = 'asc') => {
-        if (order === 'asc') {
-            collectiblesList.sort((a, b) => a[detail] > b[detail]);
-        }
-        else if (order = 'desc') {
-            collectiblesList.sort((a, b) => a[detail] < b[detail]);
-        }
+    const collectibleCount = () => {
+        let total = 0;
+        collectiblesList.map(collectible => total += collectible.count);
+        return total;
     }
 
     const starRating = (rating) => {
@@ -65,28 +76,25 @@ const CollectibleList = ({ collectibles }) => {
         });
     });
 
-    // JS to disable list links when no user is logged in
-    const checkUser = () => {
-        const head = document.querySelector('head');
-        const styleEl = document.createElement('style');
-        styleEl.id = 'a-disable';
-        styleEl.innerText = '.list > a { pointer-events: none; color: gray; }';
-        head.appendChild(styleEl);
-        const styleElNode = document.getElementById('a-disable');
-        user ? head.removeChild(styleElNode) : '';
+    const searchEl = document.getElementById('search');
+    if (searchEl) {
+        searchEl.addEventListener("keypress", (evt) => {
+            if (evt.key === 'Enter') searchFunc(collectiblesList);
+        })
     }
 
     if (collectiblesList[0]?.is_private && profileId && user.profile_id !== parseInt(profileId)) {
         return <h1>Private Collection</h1>
     };
-    orderList(formData.detail, formData.order);
-    checkUser(); // Needs a check for when redirected from login else the page needs to be reloaded
+
+    orderList(formData.detail, formData.order, collectiblesList);
 
 
     return (
         <>
             <main className="list-container">
                 <div className="sort-selects">
+                    <input type="search" name="search" id="search" value={search} onChange={handleChange} />
                     <select
                         required
                         name="detail"
@@ -94,14 +102,13 @@ const CollectibleList = ({ collectibles }) => {
                         value={formData.detail}
                         onChange={handleChange}
                     >
-                        <option value="" hidden></option>
+                        <option value="id" hidden></option>
                         <option value="name">Name</option>
                         <option value="rating">Rating</option>
                         <option value="count">Count</option>
                         <option value="condition">Condition</option>
                         <option value="date_obtained">Date Obtained</option>
                     </select>
-
                     <select
                         required
                         name="order"
@@ -113,12 +120,20 @@ const CollectibleList = ({ collectibles }) => {
                         <option value="desc">Descending</option>
                     </select>
                 </div>
-                <div className="collectible list">
+
+                <div className="collection-stats">
+                    <h4 className="stat-name">Unique Units: <span className="stat-number">{collectiblesList.length}</span></h4>
+                    <h4 className="stat-name">Cumulative Collection Count: <span className="stat-number">{collectibleCount()}</span></h4>
+                </div>
+
+                <div className={`collectible list ${user ? 'enabled' : 'disabled'}`}>
                     {collectiblesList.map((collectible) => (
-                        <Link key={collectible.id} to={`/collectibles/${collectible.id}`} >
+                        <Link key={collectible.id} to={user ? `/collectibles/${collectible.id}` : ''}>
                             <article className="list-item">
                                 <div className="collectible-list-details">
-                                    <h2><ruby>{collectible.name}<rp>(</rp><rt className="collectible-list-condition">{collectible.condition}</rt><rp>)</rp></ruby></h2>
+                                    <div className="collectible-name-container">
+                                        <h2 className="collectible-name"><ruby>{collectible.name.length > 10 ? collectible.name.slice(0, 10) + '...' : collectible.name}<rp>(</rp><rt className="collectible-list-condition">{collectible.condition}</rt><rp>)</rp></ruby></h2>
+                                    </div>
                                     {collectible.rating >= 0 ?
                                         <h4 className="star-rating">{starRating(collectible.rating)}</h4>
                                         :
