@@ -6,10 +6,14 @@
     justify-content: center;
     align-items: center;
     padding: 1rem;
-    padding-bottom: 15rem;
+
+    form {
+        margin: 10rem 0;
+    }
 }
 
 fieldset.form {
+    margin-top: 0;
     align-items: center;
     gap: .5rem;
 }
@@ -20,5 +24,11 @@ fieldset.form {
 
 .hello-there {
     @include memeOutline();
-    margin: 1rem 0 3rem 0;
+    margin-top: 2rem;
+    opacity: 0;
+    transition: all .5s linear;
+
+    &:hover {
+        opacity: 1;
+    }
 }
