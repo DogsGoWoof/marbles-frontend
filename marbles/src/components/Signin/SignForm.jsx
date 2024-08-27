@@ -42,6 +42,7 @@ const SignForm = ({ setUser, formType, navigate }) => {
     };
 
     const { username, password, passwordConf } = formData;
+
     const userRegEx = '(?=\\S*\\w\\S*)\\w{3,12}';
     const passwordRegEx = '(?=.*[a-z].*)(?=.*\\W.*)(?=.*\\d.*)(?=.*[A-Z].*).{8,64}';
 
@@ -49,17 +50,6 @@ const SignForm = ({ setUser, formType, navigate }) => {
         return !(username && password && password === passwordConf);
     };
 
-    const inputEls = document.getElementsByTagName('input');
-    if (inputEls && formType === 'signup') {
-        for (let i = 0; i < inputEls.length; i++) {
-            inputEls[i].addEventListener('click', () => {
-                inputEls[i].classList.add('instructions');
-            });
-            inputEls[i].addEventListener('focusout', () => {
-                inputEls[i].classList.remove('instructions');
-            });
-        };
-    }
 
     return (
         <main>
@@ -74,7 +64,7 @@ const SignForm = ({ setUser, formType, navigate }) => {
                         <input
                             type="text"
                             autoComplete="off"
-                            className=""
+                            className={formType === 'signup' ? 'instructions' : ''}
                             id="username"
                             value={formData.username}
                             name="username"
@@ -82,6 +72,7 @@ const SignForm = ({ setUser, formType, navigate }) => {
                             pattern={userRegEx}
                             minLength={3}
                             maxLength={12}
+                            placeholder=""
                         />
                         <ul>
                             <li>Username must:</li>
@@ -94,6 +85,7 @@ const SignForm = ({ setUser, formType, navigate }) => {
                         <input
                             type="password"
                             autoComplete="off"
+                            className={formType === 'signup' ? 'instructions' : ''}
                             id="password"
                             value={formData.password}
                             name="password"
@@ -101,6 +93,7 @@ const SignForm = ({ setUser, formType, navigate }) => {
                             pattern={passwordRegEx}
                             minLength={8}
                             maxLength={64}
+                            placeholder=""
                         />
                         <ul>
                             <li>Password must:</li>
@@ -124,6 +117,7 @@ const SignForm = ({ setUser, formType, navigate }) => {
                                     <label htmlFor="confirm">Confirm Password:</label>
                                     <input
                                         type="password"
+                                        className={formType === 'signup' ? 'instructions' : ''}
                                         id="confirm"
                                         value={passwordConf}
                                         name="passwordConf"
@@ -131,6 +125,7 @@ const SignForm = ({ setUser, formType, navigate }) => {
                                         pattern={formData.password}
                                         minLength={8}
                                         maxLength={64}
+                                        placeholder=""
                                     />
                                 </div>
                                 <button className="signup" disabled={isFormInvalid()}>Sign Up</button>

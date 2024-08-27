@@ -71,13 +71,13 @@ button {
     }
 }
 
-.instructions {
+.instructions:focus {
 
     &:valid {
         background: lightgreen;
     }
 
-    &:invalid {
+    &:invalid, &:placeholder-shown {
         background: lightcoral;
     }
 
