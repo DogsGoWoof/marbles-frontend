@@ -50,6 +50,13 @@ button {
     }
 }
 
+button, a {
+    
+    &:active {
+        scale: .9;
+    }
+}
+
 select {
     margin: 0 1rem;
     padding: .5rem;

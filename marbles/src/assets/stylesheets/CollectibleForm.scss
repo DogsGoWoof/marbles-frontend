@@ -5,7 +5,6 @@
     flex-flow: column;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
 
     form {
         margin: 10rem 0;
@@ -16,10 +15,19 @@ fieldset.form {
     margin-top: 0;
     align-items: center;
     gap: .5rem;
-}
 
-.form > label::after {
-    content: ':';
+    input {
+        width: 80%;
+    }
+
+    textarea[name=about] {
+        width: 80%;
+        aspect-ratio: 3;
+    }
+
+    label::after {
+        content: ':';
+    }
 }
 
 .hello-there {
@@ -30,5 +38,17 @@ fieldset.form {
 
     &:hover {
         opacity: 1;
+    }
+}
+
+button[type=submit] {
+    color: yellow;
+    text-shadow: 0 0 1rem black;
+    box-shadow: 0 0 1rem black;
+
+    &:hover {
+        color: greenyellow;
+        text-shadow: 0 0 .1rem black;
+        box-shadow: 0 0 1rem chartreuse;
     }
 }
