@@ -154,10 +154,20 @@
 
         a {
             height: 100%;
+            width: 100%;
+            border: 5px solid black;
+
+            &:active {
+                scale: 1;
+            }
         }
 
         &:hover {
             border-color: silver;
+        }
+
+        &:active {
+            scale: .95;
         }
     }
 }
