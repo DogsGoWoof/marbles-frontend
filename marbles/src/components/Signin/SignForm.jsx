@@ -44,7 +44,8 @@ const SignForm = ({ setUser, formType, navigate }) => {
     const { username, password, passwordConf } = formData;
 
     const userRegEx = '(?=\\S*\\w\\S*)\\w{3,12}';
-    const passwordRegEx = '(?=.*[a-z].*)(?=.*\\W.*)(?=.*\\d.*)(?=.*[A-Z].*).{8,64}';
+    const passwordRegEx = '(?=\\S*[a-z]\\S*)(?=\\S*\\W\\S*)(?=\\S*\\d\\S*)(?=\\S*[A-Z]\\S*)\\S{8,64}';
+
 
     const isFormInvalid = () => {
         return !(username && password && password === passwordConf);
