@@ -1,5 +1,5 @@
 # marbles  
-![marbles logo](./src/assets/images/marble1.svg)  
+![marbles logo](./marbles/src/assets/images/marble1.svg)  
 
 ## Getting Started  
 [marbles](https://marblles.netlify.app/)  
@@ -59,4 +59,4 @@ Fairly Odd Parents - If I had one! [Image 1](https://x.com/realhartman/status/87
 - Add friend functionality between users/profiles  
 - Add website style user customization  (attached to profile)  
 
-#### [Github Repo](https://github.com/DogsGoWoof/marbles-frontend/tree/main/marbles)
+#### [Github Repo](https://github.com/DogsGoWoof/marbles-frontend/)
