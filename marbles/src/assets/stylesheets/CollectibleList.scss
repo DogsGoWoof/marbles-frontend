@@ -28,16 +28,50 @@
 
 
     a {
+        border: .2rem solid black;
         border-radius: .5rem;
+
+        .list-item {
+            display: flex;
+            flex-flow: column-reverse;
+            justify-content: space-between;
+            height: fit-content;
+            padding: 2dvh 1dvw;
+            border: 1px solid black;
+            outline: .5rem outset $marbles-color2;
+            box-shadow: inset 0 0 .25rem black;
+
+            .collectible-list-details {
+                display: flex;
+                flex-flow: column-reverse;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                border: .5dvh ridge gray;
+                background: lightgray;
+                font-size: 2dvw;
+                text-align: center;
+                text-shadow: 0 0 1px black;
+            }
+
+            &:hover {
+                outline-color: yellow;
+            }
+        }
     }
 
-    &.enabled > a:focus {
-        box-shadow: inset 0 0 1rem gold;
+    &.enabled>a:focus {
+        box-shadow: 0 0 .5rem gold;
         outline: .2rem solid silver;
+
+        .list-item {
+            outline-color: yellow;
+            }
     }
 
     &.disabled {
         pointer-events: none;
+
         * {
             color: gray;
             filter: none;
@@ -45,7 +79,7 @@
     }
 }
 
-.collectible > * {
+.collectible>* {
     margin: 1rem;
     border: 2px solid brown;
     aspect-ratio: .7;
@@ -55,7 +89,7 @@
 
     &:hover {
         box-shadow: inset 0 0 1rem gold;
-        outline: .2rem solid silver;
+        outline: .2rem solid gold;
     }
 }
 
@@ -68,31 +102,11 @@
     color: black;
 }
 
-.collectible-list-details {
-    display: flex;
-    flex-flow: column-reverse;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    border: .5dvh ridge gray;
-    background: lightgray;
-    font-size: 2dvw;
-    text-align: center;
-}
-
-.list-item {
-    display: flex;
-    flex-flow: column-reverse;
-    justify-content: space-between;
-    height: fit-content;
-    padding: 2dvh 1dvw 1dvh 1dvw;
-}
-
 .placeholder-image,
 .collectible-list-image {
     width: 100%;
     position: relative;
-    border: .5rem ridge saddlebrown;
+    border: .35rem outset saddlebrown;
     aspect-ratio: 1;
     background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCLLDCGIvZNutHnHMaibQMwW6Oiq3nW1PBmg&s');
     background-size: cover;
