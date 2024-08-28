@@ -43,6 +43,7 @@
     display: flex;
     flex-flow: column;
     justify-content: flex-start;
+    // Turn columns into grids with the bottom row of column 1 and 3 being random items from profile's collection ( to fill empty space )
 }
 
 .header {
@@ -51,7 +52,7 @@
     border: .3rem groove black;
     border-radius: .5rem;
     margin-bottom: .5rem;
-    font-size: 2dvw;
+    font-size: 3dvh;
 }
 
 
@@ -59,7 +60,7 @@
     grid-column: 1;
 
     .profile-name {
-        font-size: 2.5dvw;
+        font-size: 3.5dvh;
     }
 
     .profile-image {
@@ -95,11 +96,10 @@
 
 .column-2 {
     grid-column: 2;
+    display: flex;
 
     .profile-favourite {
         border-radius: .5rem;
-        grid-row: 3;
-        grid-column: 2;
         display: flex;
         flex-flow: column;
         align-self: center;
@@ -110,6 +110,8 @@
         margin-bottom: 1dvh;
         width: 100%;
         padding: 1dvh 1dvw 2dvh 1dvw;
+        position: relative;
+        
 
         &:hover {
             box-shadow: 0 0 1rem gold;
@@ -124,7 +126,6 @@
                 position: fixed;
                 object-fit: contain;
                 height: 100%;
-                // width: min-content;
                 top: 0;
                 aspect-ratio: 1;
             }

@@ -5,7 +5,6 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import SignForm from './components/Signin/SignForm';
 import Landing from './components/Landing/Landing';
-import Loading from './components/Loading/Loading';
 //___Collectible Components___//
 import CollectibleList from './components/CollectibleList/CollectibleList';
 import CollectibleForm from './components/CollectibleForm/CollectibleForm';
@@ -111,7 +110,6 @@ const App = () => {
       <AuthedUserContext.Provider value={user}>
         <Navbar handleSignout={handleSignout} />
         <Routes>
-          <Route path="/loading" element={<Loading />}/>
           <Route path="/" element={<Landing />} />
           <Route path='/profiles/:profileId/collectibles' element={<CollectibleList collectibles={[]} setCollectibles={setCollectibles} orderList={orderList} />} />
           {user ?
