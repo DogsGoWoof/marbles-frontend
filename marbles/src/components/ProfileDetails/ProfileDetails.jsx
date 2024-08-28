@@ -2,6 +2,8 @@ import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import { AuthedUserContext } from '../../App';
 
+import Loading from '../Loading/Loading';
+
 import * as profileService from '../../services/profileService';
 import * as collectibleService from '../../services/collectibleService';
 
@@ -96,7 +98,7 @@ const ProfileDetails = () => {
 
                     </main >
                 :
-                <>Loading</>
+                <Loading />
             }
         </>
     );

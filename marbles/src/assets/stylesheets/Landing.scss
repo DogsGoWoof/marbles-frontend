@@ -9,24 +9,47 @@
     margin: 1rem;
 }
 
-.landing-head, .landing-body {
+.landing-head,
+.landing-body {
     text-align: center;
     background: #fffa;
     border: .5rem groove black;
     @include circleBG();
 }
 
-.landing-title {
-    font-size: 5dvh;
+.landing-head {
+
+
+    .landing-title {
+        font-size: 5dvh;
+    }
+
+    .landing-message {
+        font-style: italic;
+        font-size: 3dvh;
+    }
+
+    * {
+        width: 80dvw;
+        background: #ffffffcc;
+        border-radius: 50rem;
+        border: .3rem solid black;
+        padding: .5rem 1rem;
+        text-shadow: 0 0 1px black;
+    }
 }
 
-.landing-message {
-    font-style: italic;
-    font-size: 3dvh;
-}
+.caw {
+    transition: all .5s linear;
+    opacity: 0;
 
-.caw-collect {
-    @include memeOutline();
+    .caw-collect {
+        @include memeOutline();
+    }
+
+    &:hover {
+        opacity: 1;
+    }
 }
 
 .caption {

@@ -16,12 +16,18 @@ fieldset.form {
     align-items: center;
     gap: .5rem;
 
-    input {
+    input, textarea[name=about], select {
         width: 80%;
+        border: .2rem ridge gold;
+        border-radius: .5rem;
+        text-align: center;
+
+        &:focus {
+            background: $marbles-color1;
+        }
     }
 
     textarea[name=about] {
-        width: 80%;
         aspect-ratio: 3;
     }
 
@@ -43,12 +49,12 @@ fieldset.form {
 
 button[type=submit] {
     color: yellow;
-    text-shadow: 0 0 1rem black;
-    box-shadow: 0 0 1rem black;
+    text-shadow: 0 0 .1rem black;
+    box-shadow: 0 0 .5rem black;
 
     &:hover {
         color: greenyellow;
-        text-shadow: 0 0 .1rem black;
         box-shadow: 0 0 1rem chartreuse;
+        border-color: gold;
     }
 }

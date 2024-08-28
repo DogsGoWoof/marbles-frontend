@@ -58,6 +58,22 @@ button {
 
 .input-container {
 
+    input, label {
+        width: 100%;
+        text-align: center;
+    }
+
+    input {
+        border: .2rem ridge black;
+        border-radius: .5rem;
+
+        &:focus {
+            outline: none;
+            border-color: gold;
+            background: $marbles-color1;
+        }
+    }
+
     ul {
         display: flex;
         flex-flow: column;

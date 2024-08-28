@@ -48,6 +48,7 @@ const SignForm = ({ setUser, formType, navigate }) => {
 
     const isFormInvalid = () => {
         return !(username && password && password === passwordConf);
+            // add check for all three inputs' validity state
     };
 
 
@@ -113,7 +114,7 @@ const SignForm = ({ setUser, formType, navigate }) => {
                     <div id="buttons-confirmpw">
                         {formType === 'signup' ?
                             <>
-                                <div>
+                                <div className="input-container">
                                     <label htmlFor="confirm">Confirm Password:</label>
                                     <input
                                         type="password"

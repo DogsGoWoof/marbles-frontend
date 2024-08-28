@@ -2,6 +2,9 @@ import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { AuthedUserContext } from '../../App';
 import { useState, useEffect, useContext } from 'react';
+
+import Loading from '../Loading/Loading';
+
 import * as collectibleService from '../../services/collectibleService';
 
 import '../../assets/stylesheets/CollectibleDetails.scss';
@@ -68,7 +71,7 @@ const CollectibleDetails = (props) => {
                     }
                 </main>
                 :
-                <>Loading</>
+                <Loading />
             }
         </>
     );
