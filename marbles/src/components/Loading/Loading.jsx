@@ -1,4 +1,3 @@
-
 import '../../assets/stylesheets/Loading.scss';
 import marble1 from '../../assets/images/marble1.svg';
 

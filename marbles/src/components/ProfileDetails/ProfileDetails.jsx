@@ -31,7 +31,7 @@ const ProfileDetails = () => {
     }, [profileId]);
 
 
-    if (!profile) return <>loading</>
+    if (!profile) return <Loading />
 
     return (
         <>
