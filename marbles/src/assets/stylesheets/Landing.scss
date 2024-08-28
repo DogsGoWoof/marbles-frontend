@@ -39,7 +39,12 @@
     }
 }
 
-.caw {
+.landing-meme {
+    @include memeOutline();
+}
+
+.caw, .landing-meme {
+    max-height: 50dvh;
     transition: all .5s linear;
     opacity: 0;
 
@@ -58,9 +63,4 @@
     border: double black;
     text-align: center;
     margin-top: 2rem;
-}
-
-.landing-meme {
-    @include memeOutline();
-    max-height: 50dvh;
 }
